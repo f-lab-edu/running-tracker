@@ -10,11 +10,11 @@ interface StateRenderProps<P> {
   state: keyof P
 }
 
-interface StateRenderBooleanProps<T extends boolean> {
-  state: T
+interface StateRenderBooleanProps {
+  state: any
   render: {
-    true?: T extends true ? () => React.ReactNode : never
-    false?: T extends false ? () => React.ReactNode : never
+    true?: () => React.ReactNode
+    false?: () => React.ReactNode
   }
 }
 
@@ -23,7 +23,7 @@ const StateRender = <P extends StateRenderType = StateRenderType>({ render, stat
   return null
 }
 
-const StateRenderBoolean = <T extends boolean>({ render, state }: StateRenderBooleanProps<T>) => {
+const StateRenderBoolean = ({ render, state }: StateRenderBooleanProps) => {
   return <>{state ? render.true && render.true() : render.false && render.false()}</>
 }
 
