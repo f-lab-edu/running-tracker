@@ -2,7 +2,7 @@ import { Input, ModalHeader, ModalBody, ModalFooter, Button, Checkbox, Textarea 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import dayjs from "@shared/dayjs";
-import { RunningFormObject, RunningFormSchema, RunningForm, RunningFormDefaultValues, RunningFormTransform, DataAsRunningForm } from "@featured/running-form/model/runningForm";
+import { RunningFormObject, RunningFormSchema, RunningForm, RunningFormDefaultValues, RunningFormTransform, DataAsRunningForm } from "@features/running-form/model/runningForm";
 import { calculatePace } from "@shared/formatters";
 import StateRender from "@shared/StateRender";
 interface RunningFormContentProps {

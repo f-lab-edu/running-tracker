@@ -2,8 +2,8 @@ import { useQueryClient } from "@tanstack/react-query"
 
 import { useMutation } from "@tanstack/react-query"
 import { RunningFormObject } from "../model/runningForm"
-import { createRunning } from "@featured/running-form/api/runningCreateApi"
-import { updateRunning } from "@featured/running-form/api/runningModifyApi"
+import { createRunning } from "@features/running-form/api/runningCreateApi"
+import { updateRunning } from "@features/running-form/api/runningModifyApi"
 
 export default function useUpsertRunningMutation() {
   const queryClient = useQueryClient()

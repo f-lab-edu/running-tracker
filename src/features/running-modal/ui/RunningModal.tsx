@@ -7,8 +7,8 @@ import StateRender from '@shared/StateRender'
 import { AsyncBoundary } from '@shared/AsyncBoundary'
 import RunningModalContent from './RunningModalContent'
 import RunningModalSkeleton from './RunningModalSkeleton'
-import { useRunningModal } from '@featured/running-modal/hooks/useRunningModal'
-import useDeleteRunningMutation from '@featured/running-modal/api/useDeleteRunningMutation'
+import { useRunningModal } from '@features/running-modal/hooks/useRunningModal'
+import useDeleteRunningMutation from '@features/running-modal/api/useDeleteRunningMutation'
 import { Running } from '@entities/running/model/running'
 
 interface RunningModalProps {

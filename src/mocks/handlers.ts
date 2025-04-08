@@ -1,6 +1,6 @@
 import { http, HttpResponse, delay } from 'msw'
 import { Running } from '@entities/running/model/running'
-import { Aggregate } from '@featured/running-aggregator/model/aggregate'
+import { Aggregate } from '@features/running-aggregator/model/aggregate'
 import { v4 as uuidv4 } from 'uuid'
 import dayjs from '@shared/dayjs'
 import { runningTimeInSeconds } from '@shared/formatters'

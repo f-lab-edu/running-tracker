@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import { RunningList } from '@featured/running-list/ui/RunningList'
+import { RunningList } from '@features/running-list/ui/RunningList'
 import { Calendar } from '@heroui/react'
 import dayjs from '@shared/dayjs'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 
 import { parseDate, today, CalendarDate } from '@internationalized/date'
-import RunningListSkeleton from '@featured/running-list/ui/RunningListSkeleton'
+import RunningListSkeleton from '@features/running-list/ui/RunningListSkeleton'
 import { AsyncBoundary } from '@shared/AsyncBoundary'
-import RunningCreateFormButton from '@featured/running-form/ui/RunningCreateFormButton'
-import { useRunningModal } from '@featured/running-modal/hooks/useRunningModal'
+import RunningCreateFormButton from '@features/running-form/ui/RunningCreateFormButton'
+import { useRunningModal } from '@features/running-modal/hooks/useRunningModal'
 
 const CalenderPage: React.FC = () => {
   const navigate = useNavigate()

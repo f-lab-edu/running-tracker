@@ -1,10 +1,10 @@
 import React from 'react'
-import { RunningList } from '@featured/running-list/ui/RunningList'
-import { RunningAggregator, RunningAggregatorSkeleton } from '@featured/running-aggregator'
+import { RunningList } from '@features/running-list/ui/RunningList'
+import { RunningAggregator, RunningAggregatorSkeleton } from '@features/running-aggregator'
 import { AsyncBoundary } from '@shared/AsyncBoundary'
-import RunningListSkeleton from '@featured/running-list/ui/RunningListSkeleton'
-import RunningCreateFormButton from '@featured/running-form/ui/RunningCreateFormButton'
-import { useRunningModal } from '@featured/running-modal/hooks/useRunningModal'
+import RunningListSkeleton from '@features/running-list/ui/RunningListSkeleton'
+import RunningCreateFormButton from '@features/running-form/ui/RunningCreateFormButton'
+import { useRunningModal } from '@features/running-modal/hooks/useRunningModal'
 
 const WeeklyPage: React.FC = () => {
   const { openModal } = useRunningModal()

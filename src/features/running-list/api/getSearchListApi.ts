@@ -1,6 +1,6 @@
 import api from '@shared/api'
 import { Running } from '@entities/running/model/running'
-import { SearchFilter, SearchFilterSchemaAsSearchParams } from '@featured/running-list/model/search'
+import { SearchFilter, SearchFilterSchemaAsSearchParams } from '@features/running-list/model/search'
 
 const BASE_URL = 'runnings'
 

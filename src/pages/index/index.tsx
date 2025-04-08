@@ -1,9 +1,9 @@
 import React from 'react'
-import { RunningList } from '@featured/running-list/ui/RunningList'
-import RunningSearchFilter from '@featured/running-list/ui/RunningSearchFilter'
-import RunningCreateFormButton from '@featured/running-form/ui/RunningCreateFormButton'
+import { RunningList } from '@features/running-list/ui/RunningList'
+import RunningSearchFilter from '@features/running-list/ui/RunningSearchFilter'
+import RunningCreateFormButton from '@features/running-form/ui/RunningCreateFormButton'
 import { AsyncBoundary } from '@shared/AsyncBoundary'
-import RunningListSkeleton from '@featured/running-list/ui/RunningListSkeleton'
+import RunningListSkeleton from '@features/running-list/ui/RunningListSkeleton'
 
 const IndexPage: React.FC = () => {
   return (

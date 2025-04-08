@@ -1,6 +1,6 @@
 import { Running } from "@entities/running/model/running"
 import api from "@shared/api"
-import { RunningFormObject } from "@featured/running-form/model/runningForm"
+import { RunningFormObject } from "@features/running-form/model/runningForm"
 const BASE_URL = 'runnings'
 
 /**

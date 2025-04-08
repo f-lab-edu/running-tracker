@@ -1,10 +1,10 @@
 import React from 'react'
 import RunningCard from '@entities/running/ui/RunningCard'
 import StateRender from '@shared/StateRender'
-import { useRunningFilter } from '@featured/running-list/hooks/useRunningFilter'
-import useRunningListQuery from '@featured/running-list/api/useRunningListQuery'
+import { useRunningFilter } from '@features/running-list/hooks/useRunningFilter'
+import useRunningListQuery from '@features/running-list/api/useRunningListQuery'
 import { Running } from '@entities/running/model/running'
-import useToggleRunningAggregateMutation from '@featured/running-list/api/useToggleRunningAggregateMutation'
+import useToggleRunningAggregateMutation from '@features/running-list/api/useToggleRunningAggregateMutation'
 
 interface RunningListProps {
   daily?: boolean
