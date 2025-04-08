@@ -1,12 +1,12 @@
 import React from 'react'
 import { Modal, ModalContent } from '@heroui/react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { useRunningForm as useRunningForm } from '../hooks/useRunningForm'
+import { useRunningForm } from '@entities/running/hooks/useRunningForm'
 import RunningFormContent from './RunningFormContent'
 import StateRender from '@shared/StateRender'
-import { RunningFormObject } from '../model/runningForm'
-import { createRunning } from '../api/runningCreateApi'
-import { updateRunning } from '../api/runningModifyApi'
+import { RunningFormObject } from '@widget/running-form/model/runningForm'
+import { createRunning } from '@widget/running-form/api/runningCreateApi'
+import { updateRunning } from '@widget/running-form/api/runningModifyApi'
 
 
 const RunningForm: React.FC = () => {

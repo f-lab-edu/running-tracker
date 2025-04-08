@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from '@heroui/react'
-import { useRunningForm } from '../hooks/useRunningForm'
+import { useRunningForm } from '@entities/running/hooks/useRunningForm'
 import { Running } from '@entities/running/model/running'
 
 interface RunningModifyFormButtonProps {

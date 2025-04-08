@@ -1,9 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom'
-import DefaultLayout from '../layout/DefaultLayout'
+import DefaultLayout from '@app/layout/DefaultLayout'
 import { lazy } from 'react'
-const IndexPage = lazy(() => import('../../pages/index'))
-const WeeklyPage = lazy(() => import('../../pages/weekly'))
-const CalenderPage = lazy(() => import('../../pages/calender'))
+const IndexPage = lazy(() => import('@pages/index'))
+const WeeklyPage = lazy(() => import('@pages/weekly'))
+const CalenderPage = lazy(() => import('@pages/calender'))
 
 export const router = createBrowserRouter([
   {

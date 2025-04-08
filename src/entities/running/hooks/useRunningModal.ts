@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai'
-import { runningModalAtom } from '../lib/runningModalAtom'
+import { runningModalAtom } from '@entities/running/lib/runningModalAtom'
 
 /**
  * RunningModal을 전역적으로 제어하기 위한 훅

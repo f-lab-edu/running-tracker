@@ -5,7 +5,7 @@ import { RouterProvider } from 'react-router-dom'
 import { Provider as JotaiProvider } from 'jotai'
 import RunningModal from '@widget/running-modal/ui/RunningModal'
 import RunningForm from '@widget/running-form/ui/RunningForm'
-import { router } from '../routes'
+import { router } from '@app/routes'
 
 const queryClient = new QueryClient({
   defaultOptions: {

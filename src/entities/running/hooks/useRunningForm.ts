@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai'
-import { runningFormAtom } from '../lib/runningFormAtom'
+import { runningFormAtom } from '@entities/running/lib/runningFormAtom'
 import { Running } from '@entities/running/model/running'
 
 interface useRunningFormResult {

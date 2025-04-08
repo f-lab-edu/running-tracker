@@ -1,9 +1,9 @@
 import React from 'react'
 import RunningCard from '@entities/running/ui/RunningCard'
-import { useRunningModal } from '@widget/running-modal/hooks/useRunningModal'
+import { useRunningModal } from '@entities/running/hooks/useRunningModal'
 import StateRender from '@shared/StateRender'
-import { useRunningFilter } from '../hooks/useRunningFilter'
-import useRunningList from '../api/useRunninglist'
+import { useRunningFilter } from '@featured/running-list/hooks/useRunningFilter'
+import useRunningList from '@featured/running-list/api/useRunninglist'
 import { Running } from '@entities/running/model/running'
 import useToggleRunningAggregateMutation from '@featured/running-list/api/useToggleRunningAggregateMutation'
 

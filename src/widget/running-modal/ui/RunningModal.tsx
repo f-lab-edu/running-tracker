@@ -3,13 +3,13 @@ import {
   Modal,
   ModalContent,
 } from '@heroui/react'
-import { useRunningModal } from '../hooks/useRunningModal'
+import { useRunningModal } from '@entities/running/hooks/useRunningModal'
 import StateRender from '@shared/StateRender'
 import { AsyncBoundary } from '@shared/AsyncBoundary'
 import RunningModalContent from './RunningModalContent'
 import RunningModalSkeleton from './RunningModalSkeleton'
 import useToggleRunningAggregateMutation from '@featured/running-list/api/useToggleRunningAggregateMutation'
-import useDeleteRunningMutation from '../api/useDeleteRunningMutation'
+import useDeleteRunningMutation from '@widget/running-modal/api/useDeleteRunningMutation'
 const RunningModal: React.FC = () => {
   const [isDeleting, setIsDeleting] = useState(false)
   const { isOpen, runningId, closeModal } = useRunningModal()
