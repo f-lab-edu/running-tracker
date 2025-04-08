@@ -16,7 +16,7 @@ interface AsyncBoundaryProps {
 export function AsyncBoundary(props: AsyncBoundaryProps) {
   const {
     errorFallback,
-    spinner = true,
+    spinner,
     spinnerSize = 'md',
     spinnerColor = 'primary',
     fallback,
