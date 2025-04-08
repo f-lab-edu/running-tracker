@@ -1,6 +1,6 @@
 import ky from 'ky'
 
-const BASE_URL = 'http://localhost:3000/api'
+const BASE_URL = '/api'
 
 const api = ky.create({
   prefixUrl: BASE_URL
