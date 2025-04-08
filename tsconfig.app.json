@@ -23,7 +23,7 @@
     "noUncheckedSideEffectImports": true,
     "paths": {
       "@entities/*": ["./src/entities/*"],
-      "@features/*": ["./src/features/*"],
+      "@featured/*": ["./src/featured/*"],
       "@shared/*": ["./src/shared/*"],
       "@pages/*": ["./src/pages/*"],
       "@app/*": ["./src/app/*"]
