@@ -13,20 +13,3 @@ export const RunningSchema = z.object({
 })
 
 export type Running = z.infer<typeof RunningSchema>
-
-// 생성 스키마 (id 제외)
-export const RunningCreateSchema = RunningSchema.omit({ id: true })
-export type RunningCreate = z.infer<typeof RunningCreateSchema>
-
-// 수정 스키마 (부분 업데이트 가능)
-export const RunningUpdateSchema = RunningSchema.partial().extend({
-  id: z.string(),
-})
-export type RunningUpdate = z.infer<typeof RunningUpdateSchema>
-
-// 집계 토글 스키마
-export const RunningToggleSchema = z.object({
-  id: z.string(),
-  isAggregate: z.boolean(),
-})
-export type RunningToggle = z.infer<typeof RunningToggleSchema> 
