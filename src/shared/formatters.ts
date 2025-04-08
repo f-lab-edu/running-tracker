@@ -17,7 +17,7 @@ export const formatLength = (length: number): string => {
 export const formatPace = (pace: number): string => {
   const minutes = Math.floor(pace)
   const seconds = Math.round((pace - minutes) * 60)
-  
+
   return `${minutes}:${seconds.toString().padStart(2, '0')}/km`
 }
 
@@ -30,13 +30,19 @@ export const formatRunningTime = (seconds: number): string => {
   const hours = Math.floor(seconds / 3600)
   const minutes = Math.floor((seconds % 3600) / 60)
   const remainingSeconds = Math.floor(seconds % 60)
-  
+
   if (hours > 0) {
     return `${hours}:${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`
   }
-  
+
   return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`
 }
+
+export const runningTimeInSeconds = (endDateTime: number, startDateTime: number): number => {
+  return (endDateTime - startDateTime) / 1000
+}
+
+
 
 /**
  * 날짜 포맷팅

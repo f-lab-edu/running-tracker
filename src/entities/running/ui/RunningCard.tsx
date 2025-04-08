@@ -12,7 +12,8 @@ import {
 } from '@heroui/react'
 import { Running } from '@entities/running/model/running'
 import dayjs from '@shared/dayjs'
-import { formatPace, formatLength, formatRunningTime } from '@shared/formatters'
+import { formatPace, formatLength, formatRunningTime, runningTimeInSeconds } from '@shared/formatters'
+import StateRender from '@shared/StateRender'
 
 interface RunningCardProps {
   running: Running
@@ -30,7 +31,7 @@ const RunningCard: React.FC<RunningCardProps> = ({
     onToggleAggregate(running.id, event.target.checked)
   }
 
-  const runningTimeInSeconds = (running.endDateTime - running.startDateTime) / 1000
+  const seconds = runningTimeInSeconds(running.endDateTime, running.startDateTime)
 
   return (
     <Card
@@ -68,7 +69,7 @@ const RunningCard: React.FC<RunningCardProps> = ({
           </div>
           <div>
             <p className="text-small text-default-500">시간</p>
-            <p className="font-semibold">{formatRunningTime(runningTimeInSeconds)}</p>
+            <p className="font-semibold">{formatRunningTime(seconds)}</p>
           </div>
           <div>
             <p className="text-small text-default-500">페이스</p>
@@ -76,26 +77,44 @@ const RunningCard: React.FC<RunningCardProps> = ({
           </div>
           <div>
             <p className="text-small text-default-500">집계</p>
-            <Chip
-              size="sm"
-              color={running.isAggregate ? "primary" : "default"}
-              variant={running.isAggregate ? "solid" : "flat"}
-              className="transition-colors"
-              radius="sm"
-            >
-              {running.isAggregate ? '포함' : '제외'}
-            </Chip>
+            <StateRender.Boolean
+              state={running.isAggregate}
+              render={{
+                true: () => <Chip
+                  size="sm"
+                  color="primary"
+                  variant="solid"
+                  className="transition-colors"
+                  radius="sm"
+                >
+                  포함
+                </Chip>,
+                false: () => <Chip
+                  size="sm"
+                  color="default"
+                  variant="flat"
+                  className="transition-colors"
+                  radius="sm"
+                >
+                  제외
+                </Chip>
+              }}
+            />
           </div>
         </div>
-        {running.memo && (
-          <>
-            <Divider className="my-3" />
-            <div>
-              <p className="text-small text-default-500">메모</p>
-              <p className="text-sm mt-1">{running.memo}</p>
-            </div>
-          </>
-        )}
+        <StateRender.Boolean
+          state={running.memo}
+          render={{
+            true: () => <>
+              <Divider className="my-3" />
+              <div>
+                <p className="text-small text-default-500">메모</p>
+                <p className="text-sm mt-1">{running.memo}</p>
+              </div>
+            </>,
+            false: () => null
+          }}
+        />
       </CardBody>
       <CardFooter className="gap-2 flex justify-end text-xs text-default-400">
         {dayjs(running.startDateTime).format('HH:mm')} ~ {dayjs(running.endDateTime).format('HH:mm')}

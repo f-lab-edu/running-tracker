@@ -3,7 +3,7 @@ import { ModalFooter, Spinner } from "@heroui/react";
 import { Button } from "@heroui/react";
 
 import { ModalBody } from "@heroui/react";
-import { formatLength, formatPace } from "@shared/formatters";
+import { formatLength, formatPace, runningTimeInSeconds } from "@shared/formatters";
 
 import { Switch } from "@heroui/react";
 import { ModalHeader } from "@heroui/react";
@@ -61,7 +61,7 @@ export default function RunningModalContent({
         </li>
         <li>
           <p className="text-sm text-default-500">시간</p>
-          <p className="font-medium">{formatRunningTime((running.endDateTime - running.startDateTime) / 1000)}</p>
+          <p className="font-medium">{formatRunningTime(runningTimeInSeconds(running.endDateTime, running.startDateTime))}</p>
         </li>
         <li>
           <p className="text-sm text-default-500">페이스</p>
