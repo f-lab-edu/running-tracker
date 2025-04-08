@@ -27,18 +27,15 @@ export const RunningFormSchema = RunningCreateSchema.refine(
   }
 )
 
-export const RunningFormTransform = RunningCreateSchema.extend({
-  startDateTime: z.number(),
-  endDateTime: z.number(),
-}).transform(data => {
+export const RunningFormTransform = RunningCreateSchema.transform(data => {
   const length = data.length
   const startDateTime = dayjs(data.startDateTime).valueOf()
   const endDateTime = dayjs(data.endDateTime).valueOf()
   const pace = calculatePace(length, startDateTime, endDateTime)
-  return { ...data, pace }
+  return { ...data, startDateTime, endDateTime, pace }
 })
 
-export const DataAsRunningForm = RunningSchema.transform(data => {
+export const DataAsRunningForm = RunningSchema.transform<RunningForm>(data => {
   const startDateTime = dayjs(data.startDateTime).toISOString().substring(0, 16)
   const endDateTime = dayjs(data.endDateTime).toISOString().substring(0, 16)
   return { ...data, startDateTime, endDateTime }

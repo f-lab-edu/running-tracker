@@ -1,5 +1,5 @@
 import api from '@shared/api'
-import { Running, RunningCreate, RunningUpdate } from '../model/running'
+import { Running } from '../model/running'
 import { SearchFilter, SearchFilterSchemaAsSearchParams } from '@featured/running-list/model/search'
 
 const BASE_URL = 'runnings'
@@ -21,25 +21,6 @@ export const fetchRunnings = async (filter?: SearchFilter): Promise<Running[]> =
  */
 export const fetchRunningById = async (id: string): Promise<Running> => {
   return await api.get<Running>(`${BASE_URL}/${id}`)
-}
-
-/**
- * 러닝 생성
- * @param data 생성할 러닝 데이터
- * @returns 생성된 러닝 정보
- */
-export const createRunning = async (data: RunningCreate): Promise<Running> => {
-  return await api.post<Running>(BASE_URL, { json: data })
-}
-
-/**
- * 러닝 수정
- * @param id 러닝 ID
- * @param data 수정할 러닝 데이터
- * @returns 수정된 러닝 정보
- */
-export const updateRunning = async (id: string, data: RunningUpdate): Promise<Running> => {
-  return await api.put<Running>(`${BASE_URL}/${id}`, { json: data })
 }
 
 /**
