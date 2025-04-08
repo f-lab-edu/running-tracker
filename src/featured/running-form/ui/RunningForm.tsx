@@ -2,7 +2,7 @@ import React from 'react'
 import { Modal, ModalContent } from '@heroui/react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useRunningForm as useRunningForm } from '../hooks/useRunningForm'
-import RunningCreateFormContent from './RunningFormContent'
+import RunningFormContent from './RunningFormContent'
 import StateRender from '@shared/StateRender'
 import { RunningFormObject } from '../model/runningForm'
 import { createRunning } from '../api/runningCreateApi'
@@ -15,13 +15,16 @@ const RunningForm: React.FC = () => {
 
   const callback = () => {
     queryClient.invalidateQueries({ queryKey: ['runnings'] })
+    queryClient.invalidateQueries({ queryKey: ['running-list'] })
     queryClient.invalidateQueries({ queryKey: ['aggregate'] })
     handleCloseModal()
   }
 
   // 러닝 editor mutation
   const editorMutation = useMutation({
-    mutationFn: (data: RunningFormObject) => running ? updateRunning(running.id, data) : createRunning(data),
+    mutationFn: (data: RunningFormObject) => {
+      return data.id ? updateRunning(data.id, data) : createRunning(data)
+    },
     onSuccess: callback,
   })
 
@@ -42,7 +45,7 @@ const RunningForm: React.FC = () => {
         <StateRender.Boolean
           state={isOpen}
           render={{
-            true: () => <RunningCreateFormContent
+            true: () => <RunningFormContent
               handleCloseModal={handleCloseModal}
               onSubmit={onSubmit}
               data={running}

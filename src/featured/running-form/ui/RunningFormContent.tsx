@@ -5,13 +5,14 @@ import dayjs from "@shared/dayjs";
 import { RunningFormObject, RunningFormSchema, RunningForm, RunningFormDefaultValues, RunningFormTransform, DataAsRunningForm } from "../model/runningForm";
 import { calculatePace } from "@shared/formatters";
 import StateRender from "@shared/StateRender";
-interface RunningCreateFormContentProps {
+interface RunningFormContentProps {
   handleCloseModal: () => void
   data?: RunningFormObject | null
   onSubmit: (data: RunningFormObject) => Promise<void>
 }
 
-export default function RunningCreateFormContent({ handleCloseModal, onSubmit, data }: RunningCreateFormContentProps) {
+export default function RunningFormContent({ handleCloseModal, onSubmit, data }: RunningFormContentProps) {
+  const id = data?.id
   const { register, handleSubmit, formState: { errors, isSubmitting }, watch } = useForm<RunningForm>({
     resolver: zodResolver(RunningFormSchema),
     defaultValues: RunningFormDefaultValues,
@@ -23,7 +24,7 @@ export default function RunningCreateFormContent({ handleCloseModal, onSubmit, d
 
   const submitAction = (data: RunningForm) => {
     const runningFormObject = RunningFormTransform.parse(data)
-    onSubmit(runningFormObject)
+    onSubmit({ ...runningFormObject, id })
   }
 
   return <form onSubmit={handleSubmit(submitAction)}>

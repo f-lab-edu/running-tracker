@@ -7,8 +7,7 @@ import {
   Chip,
   Divider,
   CardFooter,
-  Tooltip,
-  Badge
+  Tooltip
 } from '@heroui/react'
 import { Running } from '@entities/running/model/running'
 import dayjs from '@shared/dayjs'

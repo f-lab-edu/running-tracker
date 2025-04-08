@@ -45,7 +45,7 @@ export const runningTimeInSeconds = (endDateTime: number, startDateTime: number)
 export const calculatePace = (length: number, startDateTime: number, endDateTime: number): number => {
   if (!length || !startDateTime || !endDateTime) return 0
   const runningTime = runningTimeInSeconds(endDateTime, startDateTime)
-  return runningTime / length
+  return (runningTime / length) / 60
 }
 
 /**
