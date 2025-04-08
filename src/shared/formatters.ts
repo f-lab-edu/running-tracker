@@ -42,7 +42,11 @@ export const runningTimeInSeconds = (endDateTime: number, startDateTime: number)
   return (endDateTime - startDateTime) / 1000
 }
 
-
+export const calculatePace = (length: number, startDateTime: number, endDateTime: number): number => {
+  if (!length || !startDateTime || !endDateTime) return 0
+  const runningTime = runningTimeInSeconds(endDateTime, startDateTime)
+  return runningTime / length
+}
 
 /**
  * 날짜 포맷팅
