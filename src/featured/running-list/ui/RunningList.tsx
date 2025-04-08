@@ -5,6 +5,7 @@ import { useRunningModal } from '@widget/running-modal/hooks/useRunningModal'
 import StateRender from '@shared/StateRender'
 import { useRunningFilter } from '../hooks/useRunningFilter'
 import useRunningList from '../api/useRunninglist'
+import { Running } from '@entities/running/model/running'
 
 interface RunningListProps {
   daily?: boolean
@@ -30,29 +31,28 @@ export const RunningList: React.FC<RunningListProps> = ({ daily, weekly }) => {
   }
 
   return (
-    <div>
-      <StateRender.Boolean
-        state={runnings.length}
-        render={{
-          true: () => (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {runnings.map((running) => (
+    <StateRender.Boolean
+      state={runnings.length}
+      render={{
+        true: () => (
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {runnings.map((running: Running) => (
+              <li key={running.id}>
                 <RunningCard
-                  key={running.id}
                   running={running}
                   onToggleAggregate={handleToggleAggregate}
                   onCardClick={handleCardClick}
                 />
-              ))}
-            </div>
-          ),
-          false: () => (
-            <div className="text-center py-12">
-              <p className="text-lg text-gray-500">기록된 러닝이 없습니다.</p>
-            </div>
-          )
-        }}
-      />
-    </div>
+              </li>
+            ))}
+          </ul>
+        ),
+        false: () => (
+          <div className="text-center py-12">
+            <p className="text-lg text-gray-500">기록된 러닝이 없습니다.</p>
+          </div>
+        )
+      }}
+    />
   )
 } 
