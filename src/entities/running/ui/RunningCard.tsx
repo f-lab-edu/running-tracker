@@ -42,9 +42,9 @@ const RunningCard: React.FC<RunningCardProps> = ({
     >
       <CardHeader className="flex gap-3">
         <div className="flex flex-col flex-grow">
-          <Badge content={dayjs(running.startDateTime).format('MM/DD')} color="primary" size="sm">
+          <div className="flex gap-2">
             <p className="text-lg font-semibold">{dayjs(running.startDateTime).format('YYYY년 MM월 DD일')}</p>
-          </Badge>
+          </div>
           <Tooltip content={`위치: ${running.location}`}>
             <p className="text-small text-default-500">{running.location}</p>
           </Tooltip>
@@ -62,20 +62,20 @@ const RunningCard: React.FC<RunningCardProps> = ({
       </CardHeader>
       <Divider />
       <CardBody className="pt-3">
-        <div className="grid grid-cols-2 gap-3">
-          <div>
+        <ul className="grid grid-cols-2 gap-3">
+          <li>
             <p className="text-small text-default-500">거리</p>
             <p className="font-semibold">{formatLength(running.length)} km</p>
-          </div>
-          <div>
+          </li>
+          <li>
             <p className="text-small text-default-500">시간</p>
             <p className="font-semibold">{formatRunningTime(seconds)}</p>
-          </div>
-          <div>
+          </li>
+          <li>
             <p className="text-small text-default-500">페이스</p>
             <p className="font-semibold">{formatPace(running.pace)}</p>
-          </div>
-          <div>
+          </li>
+          <li>
             <p className="text-small text-default-500">집계</p>
             <StateRender.Boolean
               state={running.isAggregate}
@@ -100,21 +100,21 @@ const RunningCard: React.FC<RunningCardProps> = ({
                 </Chip>
               }}
             />
-          </div>
-        </div>
-        <StateRender.Boolean
-          state={running.memo}
-          render={{
-            true: () => <>
-              <Divider className="my-3" />
-              <div>
-                <p className="text-small text-default-500">메모</p>
-                <p className="text-sm mt-1">{running.memo}</p>
-              </div>
-            </>,
-            false: () => null
-          }}
-        />
+          </li>
+          <StateRender.Boolean
+            state={running.memo}
+            render={{
+              true: () => <>
+                <Divider className="my-3 col-span-2" />
+                <li className="col-span-2">
+                  <p className="text-small text-default-500">메모</p>
+                  <p className="text-sm mt-1">{running.memo}</p>
+                </li>
+              </>,
+              false: () => null
+            }}
+          />
+        </ul>
       </CardBody>
       <CardFooter className="gap-2 flex justify-end text-xs text-default-400">
         {dayjs(running.startDateTime).format('HH:mm')} ~ {dayjs(running.endDateTime).format('HH:mm')}
