@@ -40,7 +40,8 @@ const RunningSearchFilter: React.FC = () => {
     handleSubmit,
     register,
     reset,
-    watch
+    watch,
+    formState: { isSubmitting }
   } = useForm<SearchFilter>({
     resolver: zodResolver(SearchFilterSchema),
     defaultValues: defaultFilter,
@@ -248,6 +249,7 @@ const RunningSearchFilter: React.FC = () => {
             <Button
               color="primary"
               type="submit"
+              isLoading={isSubmitting}
               startContent={<FiFilter size={16} />}
             >
               필터 적용
