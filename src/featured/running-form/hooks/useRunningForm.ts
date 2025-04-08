@@ -1,8 +1,8 @@
 import { useAtom } from 'jotai'
-import { runningCreateFormAtom } from '../lib/runningFormAtom'
+import { runningFormAtom } from '../lib/runningFormAtom'
 import { Running } from '@entities/running/model/running'
 
-interface useRunningCreateFormResult {
+interface useRunningFormResult {
   isOpen: boolean
   running: Running | null
   openForm: (running?: Running | null) => void
@@ -10,10 +10,10 @@ interface useRunningCreateFormResult {
 }
 
 /**
- * RunningCreateForm을 전역적으로 제어하기 위한 훅
+ * RunningForm을 전역적으로 제어하기 위한 훅
  */
-export const useRunningCreateForm = (): useRunningCreateFormResult => {
-  const [formState, setFormState] = useAtom(runningCreateFormAtom)
+export const useRunningForm = (): useRunningFormResult => {
+  const [formState, setFormState] = useAtom(runningFormAtom)
 
   // 폼 모달 열기
   const openForm = (running?: Running | null) => {

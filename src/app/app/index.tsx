@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { RouterProvider } from 'react-router-dom'
 import { Provider as JotaiProvider } from 'jotai'
 import RunningModal from '../../featured/running-modal/ui/RunningModal'
-import RunningCreateForm from '../../featured/running-form/ui/RunningCreateForm'
+import RunningForm from '../../featured/running-form/ui/RunningForm'
 import { router } from '../routes'
 
 const queryClient = new QueryClient({
@@ -23,7 +23,7 @@ export default function App() {
         <JotaiProvider>
           <RouterProvider router={router} />
           <RunningModal />
-          <RunningCreateForm />
+          <RunningForm />
         </JotaiProvider>
       </QueryClientProvider>
     </RecoilRoot>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from '@heroui/react'
-import { useRunningCreateForm } from '../hooks/useRunningCreateForm'
+import { useRunningForm } from '../hooks/useRunningForm'
 import { Running } from '@entities/running/model/running'
 
 interface RunningModifyFormButtonProps {
@@ -10,7 +10,7 @@ interface RunningModifyFormButtonProps {
 }
 
 const RunningModifyFormButton: React.FC<RunningModifyFormButtonProps> = ({ className, running, onPress }) => {
-  const { openForm } = useRunningCreateForm()
+  const { openForm } = useRunningForm()
 
   return (
     <Button color="primary" onPress={() => {

@@ -1,13 +1,13 @@
 import React from 'react'
 import { Button } from '@heroui/react'
-import { useRunningCreateForm } from '../hooks/useRunningCreateForm'
+import { useRunningForm } from '../hooks/useRunningForm'
 
 interface RunningCreateFormButtonProps {
   className?: string
 }
 
 const RunningCreateFormButton: React.FC<RunningCreateFormButtonProps> = ({ className }) => {
-  const { openForm } = useRunningCreateForm()
+  const { openForm } = useRunningForm()
 
   return (
     <Button color="primary" onPress={() => openForm()} className={className}>
