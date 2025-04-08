@@ -38,66 +38,61 @@ export default function RunningFormContent({ handleCloseModal, onSubmit, data }:
       />
     </ModalHeader>
     <ModalBody>
-      <div className="space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-small font-medium mb-1">
-              거리 (km)<span className="text-red-500">*</span>
-            </label>
-            <Input
-              type="number"
-              step={0.01}
-              isRequired
-              isInvalid={!!errors.length}
-              errorMessage={errors.length?.message}
-              {...register('length', {
-                valueAsNumber: true,
-                min: 0,
-              })}
-            />
-          </div>
-          <div>
-            <label className="block text-small font-medium mb-1">
-              위치<span className="text-red-500">*</span>
-            </label>
-            <Input
-              type="text"
-              isRequired
-              isInvalid={!!errors.location}
-              errorMessage={errors.location?.message}
-              {...register('location')}
-            />
-          </div>
-        </div>
+      <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <li>
+          <label className="block text-small font-medium mb-1">
+            거리 (km)<span className="text-red-500">*</span>
+          </label>
+          <Input
+            type="number"
+            step={0.01}
+            isRequired
+            isInvalid={!!errors.length}
+            errorMessage={errors.length?.message}
+            {...register('length', {
+              valueAsNumber: true,
+              min: 0,
+            })}
+          />
+        </li>
+        <li>
+          <label className="block text-small font-medium mb-1">
+            위치<span className="text-red-500">*</span>
+          </label>
+          <Input
+            type="text"
+            isRequired
+            isInvalid={!!errors.location}
+            errorMessage={errors.location?.message}
+            {...register('location')}
+          />
+        </li>
+        <li>
+          <label className="block text-small font-medium mb-1">
+            시작 시간<span className="text-red-500">*</span>
+          </label>
+          <Input
+            type="datetime-local"
+            isRequired
+            isInvalid={!!errors.startDateTime}
+            errorMessage={errors.startDateTime?.message}
+            {...register('startDateTime')}
+          />
+        </li>
+        <li>
+          <label className="block text-small font-medium mb-1">
+            종료 시간<span className="text-red-500">*</span>
+          </label>
+          <Input
+            type="datetime-local"
+            isRequired
+            isInvalid={!!errors.endDateTime}
+            errorMessage={errors.endDateTime?.message}
+            {...register('endDateTime')}
+          />
+        </li>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-small font-medium mb-1">
-              시작 시간<span className="text-red-500">*</span>
-            </label>
-            <Input
-              type="datetime-local"
-              isRequired
-              isInvalid={!!errors.startDateTime}
-              errorMessage={errors.startDateTime?.message}
-              {...register('startDateTime')}
-            />
-          </div>
-          <div>
-            <label className="block text-small font-medium mb-1">
-              종료 시간<span className="text-red-500">*</span>
-            </label>
-            <Input
-              type="datetime-local"
-              isRequired
-              isInvalid={!!errors.endDateTime}
-              errorMessage={errors.endDateTime?.message}
-              {...register('endDateTime')}
-            />
-          </div>
-        </div>
-
-        <div>
+        <li className="col-span-2">
           <label className="block text-small font-medium mb-1">
             페이스 (분/km)
           </label>
@@ -111,9 +106,9 @@ export default function RunningFormContent({ handleCloseModal, onSubmit, data }:
           <p className="text-small text-default-500 mt-1">
             * 거리와 시간에 따라 자동 계산됩니다.
           </p>
-        </div>
+        </li>
 
-        <div>
+        <li className="col-span-2">
           <label className="block text-small font-medium mb-1">
             메모
           </label>
@@ -123,16 +118,16 @@ export default function RunningFormContent({ handleCloseModal, onSubmit, data }:
             errorMessage={errors.memo?.message}
             {...register('memo')}
           />
-        </div>
+        </li>
 
-        <div>
+        <li className="col-span-2">
           <Checkbox
             {...register('isAggregate')}
           >
             집계에 포함하기
           </Checkbox>
-        </div>
-      </div>
+        </li>
+      </ul>
     </ModalBody>
     <ModalFooter>
       <Button color="danger" variant="light" onPress={handleCloseModal}>

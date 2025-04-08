@@ -7,11 +7,11 @@ import RunningCreateFormButton from '@widget/running-form/ui/RunningCreateFormBu
 
 const WeeklyPage: React.FC = () => {
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between mb-4">
+    <section className="space-y-6">
+      <header className="flex items-center justify-between mb-4">
         <h1 className="text-3xl font-bold">주간 러닝 통계</h1>
         <RunningCreateFormButton />
-      </div>
+      </header>
 
       <AsyncBoundary fallback={<RunningAggregatorSkeleton />}>
         <RunningAggregator />
@@ -24,7 +24,7 @@ const WeeklyPage: React.FC = () => {
       }>
         <RunningList weekly />
       </AsyncBoundary>
-    </div>
+    </section>
   )
 }
 

@@ -7,11 +7,11 @@ import RunningListSkeleton from '@featured/running-list/ui/RunningListSkeleton'
 
 const IndexPage: React.FC = () => {
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between mb-4">
+    <section className="space-y-6">
+      <header className="flex items-center justify-between mb-4">
         <h1 className="text-3xl font-bold">일간 러닝 기록</h1>
         <RunningCreateFormButton />
-      </div>
+      </header>
 
       <RunningSearchFilter />
 
@@ -20,7 +20,7 @@ const IndexPage: React.FC = () => {
       }>
         <RunningList />
       </AsyncBoundary>
-    </div>
+    </section>
   )
 }
 

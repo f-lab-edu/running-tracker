@@ -7,6 +7,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { parseDate, today, CalendarDate } from '@internationalized/date'
 import RunningListSkeleton from '@featured/running-list/ui/RunningListSkeleton'
 import { AsyncBoundary } from '@shared/AsyncBoundary'
+import RunningCreateFormButton from '@widget/running-form/ui/RunningCreateFormButton'
 
 const CalenderPage: React.FC = () => {
   const navigate = useNavigate()
@@ -23,8 +24,11 @@ const CalenderPage: React.FC = () => {
   }
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-3xl font-bold mb-4">월간 러닝 캘린더</h1>
+    <section className="space-y-6">
+      <header className="flex items-center justify-between mb-4">
+        <h1 className="text-3xl font-bold">월간 러닝 캘린더</h1>
+        <RunningCreateFormButton />
+      </header>
 
       <Calendar
         value={selectedDate}
@@ -40,7 +44,7 @@ const CalenderPage: React.FC = () => {
       }>
         <RunningList daily />
       </AsyncBoundary>
-    </div>
+    </section>
   )
 }
 
