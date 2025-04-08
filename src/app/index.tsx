@@ -6,7 +6,7 @@ import { Provider as JotaiProvider } from 'jotai'
 import RunningModal from '@features/running-modal/ui/RunningModal'
 import RunningForm from '@features/running-form/ui/RunningForm'
 import { router } from '@app/routes'
-import { useRunningForm } from "@entities/running/hooks/useRunningForm"
+import { useRunningForm } from "@features/running-form/hooks/useRunningForm"
 import useToggleRunningAggregateMutation from "@features/running-list/api/useToggleRunningAggregateMutation"
 
 const queryClient = new QueryClient({
