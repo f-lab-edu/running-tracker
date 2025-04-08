@@ -1,15 +1,15 @@
 import { ModalFooter, ModalBody, ModalHeader, Button, Switch, Spinner } from "@heroui/react";
 import { formatLength, formatPace, runningTimeInSeconds, formatDateTime, formatRunningTime } from "@shared/formatters";
 import StateRender from "@shared/StateRender";
-import useGetRunningQuery from "@widget/running-modal/api/useGetRunningQuery";
-import RunningModifyFormButton from "@widget/running-form/ui/RunningModifyFormButton";
-
+import useGetRunningQuery from "@featured/running-modal/api/useGetRunningQuery";
+import { Running } from "@entities/running/model/running";
 interface RunningModalContentProps {
   runningId: string
   isDeleting: boolean
   handleToggleAggregate: (checked: boolean) => Promise<void>
   handleDelete: () => Promise<void>
   closeModal: () => void
+  onModifyOpen?: (running: Running) => void
 }
 
 export default function RunningModalContent({
@@ -17,7 +17,8 @@ export default function RunningModalContent({
   handleToggleAggregate,
   handleDelete,
   isDeleting,
-  closeModal
+  closeModal,
+  onModifyOpen
 }: RunningModalContentProps) {
   const { data: running, refetch } = useGetRunningQuery(runningId)
 
@@ -27,6 +28,11 @@ export default function RunningModalContent({
 
   const handleDeleteWrapped = () => {
     handleDelete().then(() => closeModal())
+  }
+
+  const handleModifyOpenWrapped = (running: Running) => {
+    onModifyOpen?.(running)
+    closeModal()
   }
 
   return (<>
@@ -82,7 +88,12 @@ export default function RunningModalContent({
       <Button color="danger" variant="light" onPress={handleDeleteWrapped} isDisabled={isDeleting}>
         {isDeleting ? <Spinner size="sm" /> : '삭제'}
       </Button>
-      <RunningModifyFormButton running={running} onPress={closeModal} />
+      <StateRender.Boolean
+        state={onModifyOpen}
+        render={{
+          true: () => <Button color="primary" onPress={() => handleModifyOpenWrapped(running)}>수정</Button>
+        }}
+      />
       <Button color="primary" onPress={closeModal}>
         닫기
       </Button>

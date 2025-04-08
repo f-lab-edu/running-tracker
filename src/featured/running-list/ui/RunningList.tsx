@@ -1,23 +1,22 @@
 import React from 'react'
 import RunningCard from '@entities/running/ui/RunningCard'
-import { useRunningModal } from '@entities/running/hooks/useRunningModal'
 import StateRender from '@shared/StateRender'
 import { useRunningFilter } from '@featured/running-list/hooks/useRunningFilter'
-import useRunningList from '@featured/running-list/api/useRunninglist'
+import useRunningListQuery from '@featured/running-list/api/useRunningListQuery'
 import { Running } from '@entities/running/model/running'
 import useToggleRunningAggregateMutation from '@featured/running-list/api/useToggleRunningAggregateMutation'
 
 interface RunningListProps {
   daily?: boolean
   weekly?: boolean
+  openModal?: (id: string) => void
 }
 
-export const RunningList: React.FC<RunningListProps> = ({ daily, weekly }) => {
-  const { openModal } = useRunningModal()
+export const RunningList: React.FC<RunningListProps> = ({ daily, weekly, openModal }) => {
   const filter = useRunningFilter({ daily, weekly })
 
   // 데이터 조회
-  const { data: runnings = [], refetch } = useRunningList(filter)
+  const { data: runnings = [], refetch } = useRunningListQuery(filter)
   const { mutate: toggleAggregate } = useToggleRunningAggregateMutation()
 
   // 집계 토글 처리
@@ -28,7 +27,9 @@ export const RunningList: React.FC<RunningListProps> = ({ daily, weekly }) => {
 
   // 카드 클릭 처리
   const handleCardClick = (id: string) => {
-    openModal(id)
+    if (openModal) {
+      openModal(id)
+    }
   }
 
   return (

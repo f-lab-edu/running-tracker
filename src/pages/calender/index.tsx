@@ -7,12 +7,13 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { parseDate, today, CalendarDate } from '@internationalized/date'
 import RunningListSkeleton from '@featured/running-list/ui/RunningListSkeleton'
 import { AsyncBoundary } from '@shared/AsyncBoundary'
-import RunningCreateFormButton from '@widget/running-form/ui/RunningCreateFormButton'
+import RunningCreateFormButton from '@featured/running-form/ui/RunningCreateFormButton'
+import { useRunningModal } from '@featured/running-modal/hooks/useRunningModal'
 
 const CalenderPage: React.FC = () => {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
-
+  const { openModal } = useRunningModal()
   const dateParam = searchParams.get('date')
 
   const [selectedDate, setSelectedDate] = useState<CalendarDate>(dateParam ? parseDate(dateParam) : today('Asia/Seoul'))
@@ -42,7 +43,7 @@ const CalenderPage: React.FC = () => {
       <AsyncBoundary fallback={
         <RunningListSkeleton />
       }>
-        <RunningList daily />
+        <RunningList daily openModal={openModal} />
       </AsyncBoundary>
     </section>
   )

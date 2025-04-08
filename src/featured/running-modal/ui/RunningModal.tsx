@@ -3,22 +3,30 @@ import {
   Modal,
   ModalContent,
 } from '@heroui/react'
-import { useRunningModal } from '@entities/running/hooks/useRunningModal'
 import StateRender from '@shared/StateRender'
 import { AsyncBoundary } from '@shared/AsyncBoundary'
 import RunningModalContent from './RunningModalContent'
 import RunningModalSkeleton from './RunningModalSkeleton'
-import useToggleRunningAggregateMutation from '@featured/running-list/api/useToggleRunningAggregateMutation'
-import useDeleteRunningMutation from '@widget/running-modal/api/useDeleteRunningMutation'
-const RunningModal: React.FC = () => {
+import { useRunningModal } from '@featured/running-modal/hooks/useRunningModal'
+import useDeleteRunningMutation from '@featured/running-modal/api/useDeleteRunningMutation'
+import { Running } from '@entities/running/model/running'
+
+interface RunningModalProps {
+  onModifyOpen?: (running: Running) => void,
+  onToggleAggregate?: (params: { id: string, isAggregate: boolean }) => void
+}
+
+const RunningModal: React.FC<RunningModalProps> = ({
+  onModifyOpen,
+  onToggleAggregate
+}) => {
   const [isDeleting, setIsDeleting] = useState(false)
   const { isOpen, runningId, closeModal } = useRunningModal()
-  const { mutate: toggleAggregate } = useToggleRunningAggregateMutation()
   const { mutate: deleteRunning } = useDeleteRunningMutation()
   // 집계 토글 처리
   const handleToggleAggregate = async (checked: boolean) => {
     if (!runningId) return
-    await toggleAggregate({ id: runningId, isAggregate: checked })
+    onToggleAggregate?.({ id: runningId, isAggregate: checked })
   }
 
   // 삭제 처리
@@ -50,6 +58,7 @@ const RunningModal: React.FC = () => {
                 handleDelete={handleDelete}
                 isDeleting={isDeleting}
                 closeModal={closeModal}
+                onModifyOpen={onModifyOpen}
               />
             </AsyncBoundary>
           }}

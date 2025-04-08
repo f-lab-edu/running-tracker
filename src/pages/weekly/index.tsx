@@ -3,9 +3,12 @@ import { RunningList } from '@featured/running-list/ui/RunningList'
 import { RunningAggregator, RunningAggregatorSkeleton } from '@featured/running-aggregator'
 import { AsyncBoundary } from '@shared/AsyncBoundary'
 import RunningListSkeleton from '@featured/running-list/ui/RunningListSkeleton'
-import RunningCreateFormButton from '@widget/running-form/ui/RunningCreateFormButton'
+import RunningCreateFormButton from '@featured/running-form/ui/RunningCreateFormButton'
+import { useRunningModal } from '@featured/running-modal/hooks/useRunningModal'
 
 const WeeklyPage: React.FC = () => {
+  const { openModal } = useRunningModal()
+
   return (
     <section className="space-y-6">
       <header className="flex items-center justify-between mb-4">
@@ -22,7 +25,7 @@ const WeeklyPage: React.FC = () => {
       <AsyncBoundary fallback={
         <RunningListSkeleton />
       }>
-        <RunningList weekly />
+        <RunningList weekly openModal={openModal} />
       </AsyncBoundary>
     </section>
   )

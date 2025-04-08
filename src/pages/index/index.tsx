@@ -1,7 +1,7 @@
 import React from 'react'
 import { RunningList } from '@featured/running-list/ui/RunningList'
 import RunningSearchFilter from '@featured/running-list/ui/RunningSearchFilter'
-import RunningCreateFormButton from '@widget/running-form/ui/RunningCreateFormButton'
+import RunningCreateFormButton from '@featured/running-form/ui/RunningCreateFormButton'
 import { AsyncBoundary } from '@shared/AsyncBoundary'
 import RunningListSkeleton from '@featured/running-list/ui/RunningListSkeleton'
 
