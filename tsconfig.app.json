@@ -22,11 +22,11 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "paths": {
-      "@entities": ["./src/entities/*"],
-      "@features": ["./src/features/*"],
-      "@shared": ["./src/shared/*"],
-      "@pages": ["./src/pages/*"],
-      "@app": ["./src/app/*"]
+      "@entities/*": ["./src/entities/*"],
+      "@features/*": ["./src/features/*"],
+      "@shared/*": ["./src/shared/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@app/*": ["./src/app/*"]
     }
   },
   "include": ["src"]
