@@ -2,6 +2,7 @@ import { ModalFooter, ModalBody, ModalHeader, Button, Switch, Spinner } from "@h
 import { formatLength, formatPace, runningTimeInSeconds, formatDateTime, formatRunningTime } from "@shared/formatters";
 import StateRender from "@shared/StateRender";
 import useGetRunning from "../api/useGetRunning";
+import RunningModifyFormButton from "@featured/running-form/ui/RunningModifyFormButton";
 
 interface RunningModalContentProps {
   runningId: string
@@ -81,6 +82,7 @@ export default function RunningModalContent({
       <Button color="danger" variant="light" onPress={handleDeleteWrapped} isDisabled={isDeleting}>
         {isDeleting ? <Spinner size="sm" /> : '삭제'}
       </Button>
+      <RunningModifyFormButton running={running} onPress={closeModal} />
       <Button color="primary" onPress={closeModal}>
         닫기
       </Button>
