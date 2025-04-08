@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { RunningList } from '../../featured/running-list/ui/RunningList'
+import { RunningList } from '@featured/running-list/ui/RunningList'
 import { Calendar } from '@heroui/react'
 import dayjs from '@shared/dayjs'
 import { useNavigate, useSearchParams } from 'react-router-dom'

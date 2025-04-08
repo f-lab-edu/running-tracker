@@ -3,7 +3,7 @@ import { RunningList } from '@featured/running-list/ui/RunningList'
 import { RunningAggregator, RunningAggregatorSkeleton } from '@featured/running-aggregator'
 import { AsyncBoundary } from '@shared/AsyncBoundary'
 import RunningListSkeleton from '@featured/running-list/ui/RunningListSkeleton'
-import RunningCreateFormButton from '@featured/running-form/ui/RunningCreateFormButton'
+import RunningCreateFormButton from '@widget/running-form/ui/RunningCreateFormButton'
 
 const WeeklyPage: React.FC = () => {
   return (

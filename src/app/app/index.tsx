@@ -3,8 +3,8 @@ import { RecoilRoot } from 'recoil'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { RouterProvider } from 'react-router-dom'
 import { Provider as JotaiProvider } from 'jotai'
-import RunningModal from '../../featured/running-modal/ui/RunningModal'
-import RunningForm from '../../featured/running-form/ui/RunningForm'
+import RunningModal from '@widget/running-modal/ui/RunningModal'
+import RunningForm from '@widget/running-form/ui/RunningForm'
 import { router } from '../routes'
 
 const queryClient = new QueryClient({

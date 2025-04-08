@@ -1,7 +1,7 @@
 import React from 'react'
 import { toggleRunningAggregate } from '@entities/running/api/runningApi'
 import RunningCard from '@entities/running/ui/RunningCard'
-import { useRunningModal } from '@featured/running-modal/hooks/useRunningModal'
+import { useRunningModal } from '@widget/running-modal/hooks/useRunningModal'
 import StateRender from '@shared/StateRender'
 import { useRunningFilter } from '../hooks/useRunningFilter'
 import useRunningList from '../api/useRunninglist'
