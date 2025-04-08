@@ -4,7 +4,8 @@ import RunningSearchFilter from '@features/running-list/ui/RunningSearchFilter'
 import RunningCreateFormButton from '@features/running-form/ui/RunningCreateFormButton'
 import { AsyncBoundary } from '@shared/AsyncBoundary'
 import RunningListSkeleton from '@features/running-list/ui/RunningListSkeleton'
-
+import RunningModals from '@widgets/running-modals/RunningModals'
+import RunningCardWithActions from '@widgets/running-card/RunningCardWithActions'
 const IndexPage: React.FC = () => {
   return (
     <section className="space-y-6">
@@ -18,8 +19,15 @@ const IndexPage: React.FC = () => {
       <AsyncBoundary fallback={
         <RunningListSkeleton />
       }>
-        <RunningList />
+        <RunningList>
+          {(running) => (
+            <RunningCardWithActions
+              running={running}
+            />
+          )}
+        </RunningList>
       </AsyncBoundary>
+      <RunningModals />
     </section>
   )
 }

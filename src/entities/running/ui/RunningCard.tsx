@@ -16,7 +16,7 @@ import StateRender from '@shared/StateRender'
 
 interface RunningCardProps {
   running: Running
-  onToggleAggregate: (id: string, isAggregate: boolean) => void
+  onToggleAggregate: (params: { id: string, isAggregate: boolean }) => void
   onCardClick: (id: string) => void
 }
 
@@ -27,7 +27,7 @@ const RunningCard: React.FC<RunningCardProps> = ({
 }) => {
   const handleToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.stopPropagation()
-    onToggleAggregate(running.id, event.target.checked)
+    onToggleAggregate({ id: running.id, isAggregate: event.target.checked })
   }
 
   const seconds = runningTimeInSeconds(running.endDateTime, running.startDateTime)

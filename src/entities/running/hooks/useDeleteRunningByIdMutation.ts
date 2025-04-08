@@ -1,11 +1,11 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteRunning } from "@entities/running/api/runningApi";
+import { deleteRunningById } from "@entities/running/api/runningApi";
 
-export default function useDeleteRunningMutation() {
+export default function useDeleteRunningByIdMutation() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: deleteRunning,
+    mutationFn: deleteRunningById,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['running-list'] })
       queryClient.invalidateQueries({ queryKey: ['running'] })

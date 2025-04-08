@@ -1,36 +1,20 @@
 import React from 'react'
-import RunningCard from '@entities/running/ui/RunningCard'
 import StateRender from '@shared/StateRender'
 import { useRunningFilter } from '@features/running-list/hooks/useRunningFilter'
-import useRunningListQuery from '@features/running-list/api/useRunningListQuery'
+import useRunningListQuery from '@features/running-list/hooks/useRunningListQuery'
 import { Running } from '@entities/running/model/running'
-import useToggleRunningAggregateMutation from '@features/running-list/api/useToggleRunningAggregateMutation'
 
 interface RunningListProps {
   daily?: boolean
   weekly?: boolean
-  openModal?: (id: string) => void
+  children?: (running: Running) => React.ReactNode
 }
 
-export const RunningList: React.FC<RunningListProps> = ({ daily, weekly, openModal }) => {
+export const RunningList: React.FC<RunningListProps> = ({ daily, weekly, children }) => {
   const filter = useRunningFilter({ daily, weekly })
 
   // 데이터 조회
-  const { data: runnings = [], refetch } = useRunningListQuery(filter)
-  const { mutate: toggleAggregate } = useToggleRunningAggregateMutation()
-
-  // 집계 토글 처리
-  const handleToggleAggregate = async (id: string, isAggregate: boolean) => {
-    await toggleAggregate({ id, isAggregate })
-    refetch()
-  }
-
-  // 카드 클릭 처리
-  const handleCardClick = (id: string) => {
-    if (openModal) {
-      openModal(id)
-    }
-  }
+  const { data: runnings } = useRunningListQuery(filter)
 
   return (
     <StateRender.Boolean
@@ -40,11 +24,7 @@ export const RunningList: React.FC<RunningListProps> = ({ daily, weekly, openMod
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {runnings.map((running: Running) => (
               <li key={running.id}>
-                <RunningCard
-                  running={running}
-                  onToggleAggregate={handleToggleAggregate}
-                  onCardClick={handleCardClick}
-                />
+                {children?.(running)}
               </li>
             ))}
           </ul>

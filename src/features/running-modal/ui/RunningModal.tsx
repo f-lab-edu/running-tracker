@@ -8,21 +8,21 @@ import { AsyncBoundary } from '@shared/AsyncBoundary'
 import RunningModalContent from './RunningModalContent'
 import RunningModalSkeleton from './RunningModalSkeleton'
 import { useRunningModal } from '@features/running-modal/hooks/useRunningModal'
-import useDeleteRunningMutation from '@features/running-modal/api/useDeleteRunningMutation'
 import { Running } from '@entities/running/model/running'
-
+import { UseMutateFunction } from '@tanstack/react-query'
 interface RunningModalProps {
   onModifyOpen?: (running: Running) => void,
+  onDelete?: UseMutateFunction<void, Error, string>,
   onToggleAggregate?: (params: { id: string, isAggregate: boolean }) => void
 }
 
 const RunningModal: React.FC<RunningModalProps> = ({
   onModifyOpen,
-  onToggleAggregate
+  onToggleAggregate,
+  onDelete
 }) => {
   const [isDeleting, setIsDeleting] = useState(false)
   const { isOpen, runningId, closeModal } = useRunningModal()
-  const { mutate: deleteRunning } = useDeleteRunningMutation()
   // 집계 토글 처리
   const handleToggleAggregate = async (checked: boolean) => {
     if (!runningId) return
@@ -33,14 +33,17 @@ const RunningModal: React.FC<RunningModalProps> = ({
   const handleDelete = async () => {
     if (!runningId) return
     setIsDeleting(true)
-    try {
-      await deleteRunning(runningId)
-      closeModal()
-    } catch (error) {
-      console.error('러닝 삭제 오류:', error)
-    } finally {
-      setIsDeleting(false)
-    }
+    await onDelete?.(runningId, {
+      onSuccess: () => {
+        closeModal()
+      },
+      onError: (error) => {
+        console.error('러닝 삭제 오류:', error)
+      },
+      onSettled: () => {
+        setIsDeleting(false)
+      }
+    })
   }
 
   return (

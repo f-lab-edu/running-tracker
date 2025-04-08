@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toggleRunningAggregate } from "@entities/running/api/runningApi";
 
-export default function useToggleRunningAggregateMutation() {
+export default function useToggleRunningAggregateByIdMutation() {
   const queryClient = useQueryClient()
 
   return useMutation({

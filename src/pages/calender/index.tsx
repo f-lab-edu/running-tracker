@@ -3,17 +3,15 @@ import { RunningList } from '@features/running-list/ui/RunningList'
 import { Calendar } from '@heroui/react'
 import dayjs from '@shared/dayjs'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-
 import { parseDate, today, CalendarDate } from '@internationalized/date'
 import RunningListSkeleton from '@features/running-list/ui/RunningListSkeleton'
 import { AsyncBoundary } from '@shared/AsyncBoundary'
 import RunningCreateFormButton from '@features/running-form/ui/RunningCreateFormButton'
-import { useRunningModal } from '@features/running-modal/hooks/useRunningModal'
-
+import RunningModals from '@widgets/running-modals/RunningModals'
+import RunningCardWithActions from '@widgets/running-card/RunningCardWithActions'
 const CalenderPage: React.FC = () => {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
-  const { openModal } = useRunningModal()
   const dateParam = searchParams.get('date')
 
   const [selectedDate, setSelectedDate] = useState<CalendarDate>(dateParam ? parseDate(dateParam) : today('Asia/Seoul'))
@@ -43,8 +41,15 @@ const CalenderPage: React.FC = () => {
       <AsyncBoundary fallback={
         <RunningListSkeleton />
       }>
-        <RunningList daily openModal={openModal} />
+        <RunningList daily>
+          {(running) => (
+            <RunningCardWithActions
+              running={running}
+            />
+          )}
+        </RunningList>
       </AsyncBoundary>
+      <RunningModals />
     </section>
   )
 }

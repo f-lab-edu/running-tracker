@@ -29,6 +29,6 @@ export const toggleRunningAggregate = async (id: string, isAggregate: boolean): 
  * 러닝 삭제
  * @param id 러닝 ID
  */
-export const deleteRunning = async (id: string): Promise<void> => {
+export const deleteRunningById = async (id: string): Promise<void> => {
   await api.delete(`${BASE_URL}/${id}`)
 } 

@@ -4,11 +4,17 @@ import RunningFormContent from './RunningFormContent'
 import StateRender from '@shared/StateRender'
 import { useRunningForm } from '@features/running-form/hooks/useRunningForm'
 import { RunningFormObject } from '../model/runningForm'
-import useUpsertRunningMutation from '../api/upsertRunningMutation'
+import { Running } from '@entities/running/model/running'
+import { UseMutateFunction } from '@tanstack/react-query'
 
-const RunningForm: React.FC = () => {
+interface RunningFormProps {
+  upsertRunning: UseMutateFunction<Running, Error, RunningFormObject>
+}
+
+const RunningForm: React.FC<RunningFormProps> = ({
+  upsertRunning
+}) => {
   const { isOpen, closeForm, running } = useRunningForm()
-  const { mutate: upsertRunning } = useUpsertRunningMutation()
 
   // 폼 제출 핸들러
   const onSubmit = (data: RunningFormObject) => {

@@ -1,15 +1,14 @@
 import { useQueryClient } from "@tanstack/react-query"
 
 import { useMutation } from "@tanstack/react-query"
-import { RunningFormObject } from "../model/runningForm"
-import { createRunning } from "@features/running-form/api/runningCreateApi"
-import { updateRunning } from "@features/running-form/api/runningModifyApi"
-
+import { createRunning } from "@entities/running/api/runningCreateApi"
+import { updateRunning } from "@entities/running/api/runningModifyApi"
+import { Running } from "@entities/running/model/running"
 export default function useUpsertRunningMutation() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (data: RunningFormObject) => {
+    mutationFn: (data: Omit<Running, 'id'> & Partial<Pick<Running, 'id'>>) => {
       if (data.id) {
         return updateRunning(data.id, data)
       } else {
