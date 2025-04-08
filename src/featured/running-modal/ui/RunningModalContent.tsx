@@ -1,15 +1,8 @@
-import { ModalFooter, Spinner } from "@heroui/react";
-
-import { Button } from "@heroui/react";
-
-import { ModalBody } from "@heroui/react";
-import { formatLength, formatPace, runningTimeInSeconds } from "@shared/formatters";
-
-import { Switch } from "@heroui/react";
-import { ModalHeader } from "@heroui/react";
-import { formatDateTime, formatRunningTime } from "@shared/formatters";
+import { ModalFooter, ModalBody, ModalHeader, Button, Switch, Spinner } from "@heroui/react";
+import { formatLength, formatPace, runningTimeInSeconds, formatDateTime, formatRunningTime } from "@shared/formatters";
 import StateRender from "@shared/StateRender";
 import useGetRunning from "../api/useGetRunning";
+
 interface RunningModalContentProps {
   runningId: string
   isDeleting: boolean
@@ -27,11 +20,11 @@ export default function RunningModalContent({
 }: RunningModalContentProps) {
   const { data: running, refetch } = useGetRunning(runningId)
 
-  const handleToggleAggregateWarpped = (checked: boolean) => {
+  const handleToggleAggregateWrapped = (checked: boolean) => {
     handleToggleAggregate(checked).then(() => refetch())
   }
 
-  const handleDeleteWarpped = () => {
+  const handleDeleteWrapped = () => {
     handleDelete().then(() => closeModal())
   }
 
@@ -43,7 +36,7 @@ export default function RunningModalContent({
           <span className="text-sm text-default-500">집계 포함</span>
           <Switch
             isSelected={running.isAggregate}
-            onChange={(e) => handleToggleAggregateWarpped(e.target.checked)}
+            onChange={(e) => handleToggleAggregateWrapped(e.target.checked)}
             size="sm"
             color="primary"
           />
@@ -85,7 +78,7 @@ export default function RunningModalContent({
       </ul>
     </ModalBody>
     <ModalFooter className="border-t pt-4">
-      <Button color="danger" variant="light" onPress={handleDeleteWarpped} isDisabled={isDeleting}>
+      <Button color="danger" variant="light" onPress={handleDeleteWrapped} isDisabled={isDeleting}>
         {isDeleting ? <Spinner size="sm" /> : '삭제'}
       </Button>
       <Button color="primary" onPress={closeModal}>
