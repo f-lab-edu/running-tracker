@@ -1,7 +1,7 @@
 import { ModalFooter, ModalBody, ModalHeader, Button, Switch, Spinner } from "@heroui/react";
 import { formatLength, formatPace, runningTimeInSeconds, formatDateTime, formatRunningTime } from "@shared/formatters";
 import StateRender from "@shared/StateRender";
-import useGetRunning from "@widget/running-modal/api/useGetRunning";
+import useGetRunningQuery from "@widget/running-modal/api/useGetRunningQuery";
 import RunningModifyFormButton from "@widget/running-form/ui/RunningModifyFormButton";
 
 interface RunningModalContentProps {
@@ -19,7 +19,7 @@ export default function RunningModalContent({
   isDeleting,
   closeModal
 }: RunningModalContentProps) {
-  const { data: running, refetch } = useGetRunning(runningId)
+  const { data: running, refetch } = useGetRunningQuery(runningId)
 
   const handleToggleAggregateWrapped = (checked: boolean) => {
     handleToggleAggregate(checked).then(() => refetch())
