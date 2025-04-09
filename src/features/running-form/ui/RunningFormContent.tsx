@@ -5,13 +5,14 @@ import dayjs from "@shared/lib/dayjs";
 import { RunningFormObject, RunningFormSchema, RunningForm, RunningFormDefaultValues, RunningFormTransform, DataAsRunningForm } from "@features/running-form/model/form";
 import { calculatePace } from "@shared/lib/formatters";
 import StateRender from "@shared/ui/StateRender";
+import { FC } from "react";
 interface RunningFormContentProps {
   handleCloseModal: () => void
   data?: RunningFormObject | null
   onSubmit: (data: RunningFormObject) => void
 }
 
-export default function RunningFormContent({ handleCloseModal, onSubmit, data }: RunningFormContentProps) {
+const RunningFormContent: FC<RunningFormContentProps> = ({ handleCloseModal, onSubmit, data }) => {
   const id = data?.id
   const { register, handleSubmit, formState: { errors, isSubmitting }, watch } = useForm<RunningForm>({
     resolver: zodResolver(RunningFormSchema),
@@ -139,3 +140,5 @@ export default function RunningFormContent({ handleCloseModal, onSubmit, data }:
     </ModalFooter>
   </form>
 }
+
+export default RunningFormContent

@@ -3,6 +3,7 @@ import { formatLength, formatPace, runningTimeInSeconds, formatDateTime, formatR
 import StateRender from "@shared/ui/StateRender";
 import useGetRunningByIdQuery from "@entities/running/hooks/useGetRunningByIdQuery";
 import { Running } from "@entities/running/model";
+import { FC } from "react";
 export interface RunningModalContentProps {
   runningId: string
   isDeleting: boolean
@@ -12,14 +13,14 @@ export interface RunningModalContentProps {
   onModifyOpen?: (running: Running) => void
 }
 
-export default function RunningModalContent({
+const RunningModalContent: FC<RunningModalContentProps> = ({
   runningId,
   handleToggleAggregate,
   handleDelete,
   isDeleting,
   closeModal,
   onModifyOpen
-}: RunningModalContentProps) {
+}) => {
   const { data: running, refetch } = useGetRunningByIdQuery(runningId)
 
   const handleToggleAggregateWrapped = (checked: boolean) => {
@@ -54,7 +55,7 @@ export default function RunningModalContent({
       </p>
     </ModalHeader>
     <ModalBody className="py-5">
-      <ul role="article" className="grid grid-cols-2 gap-y-4">
+      <ul role="contentinfo" className="grid grid-cols-2 gap-y-4">
         <li>
           <p className="text-sm text-default-500">거리</p>
           <p className="font-medium">{formatLength(running.length)} km</p>
@@ -101,3 +102,5 @@ export default function RunningModalContent({
   </>
   )
 }
+
+export default RunningModalContent

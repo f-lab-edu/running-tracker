@@ -1,4 +1,4 @@
-import { cloneElement, ReactElement, ReactNode, Suspense, useCallback } from 'react'
+import { cloneElement, FC, ReactElement, ReactNode, Suspense, useCallback } from 'react'
 import { ErrorBoundary, FallbackProps } from 'react-error-boundary'
 import { DefaultErrorContent } from './DefaultErrorContent'
 import { Spinner } from '@heroui/react'
@@ -13,7 +13,7 @@ interface AsyncBoundaryProps {
   spinnerColor?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger'
 }
 
-export function AsyncBoundary(props: AsyncBoundaryProps) {
+export const AsyncBoundary: FC<AsyncBoundaryProps> = (props) => {
   const {
     errorFallback,
     spinner,

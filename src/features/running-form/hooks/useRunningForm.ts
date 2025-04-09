@@ -2,7 +2,7 @@ import { useAtom } from 'jotai'
 import { runningFormAtom } from '@features/running-form/lib/runningFormAtom'
 import { Running } from '@entities/running/model'
 
-interface useRunningFormResult {
+interface RunningFormResult {
   isOpen: boolean
   running: Running | null
   openForm: (running?: Running | null) => void
@@ -12,7 +12,7 @@ interface useRunningFormResult {
 /**
  * RunningForm을 전역적으로 제어하기 위한 훅
  */
-export const useRunningForm = (): useRunningFormResult => {
+export const useRunningForm = (): RunningFormResult => {
   const [formState, setFormState] = useAtom(runningFormAtom)
 
   // 폼 모달 열기

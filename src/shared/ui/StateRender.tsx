@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { FC, ReactNode } from 'react'
 
 type KeyType = string | number
 type StateRenderType = {
@@ -18,13 +18,12 @@ interface StateRenderBooleanProps {
   }
 }
 
-const StateRender = <P extends StateRenderType = StateRenderType>({ render, state }: StateRenderProps<P>) => {
-  if (render[state]) return <>{render[state]()}</>
-  return null
+const StateRender = <P extends StateRenderType = StateRenderType>({ render, state }: Readonly<StateRenderProps<P>>) => {
+  return <>{render[state]?.()}</>
 }
 
-const StateRenderBoolean = ({ render, state }: StateRenderBooleanProps) => {
-  return <>{state ? render.true && render.true() : render.false && render.false()}</>
+const StateRenderBoolean: FC<StateRenderBooleanProps> = ({ render, state }) => {
+  return <>{state ? render.true?.() : render.false?.()}</>
 }
 
 StateRender.Boolean = StateRenderBoolean
