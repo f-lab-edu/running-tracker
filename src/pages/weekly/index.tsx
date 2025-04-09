@@ -1,11 +1,11 @@
 import React from 'react'
 import { RunningList } from '@features/running-list/ui/RunningList'
-import { RunningAggregator, RunningAggregatorSkeleton } from '@features/running-aggregator'
 import { AsyncBoundary } from '@shared/ui/AsyncBoundary'
 import RunningListSkeleton from '@features/running-list/ui/RunningListSkeleton'
 import RunningCreateFormButton from '@features/running-form/ui/RunningCreateFormButton'
 import RunningModals from '@widgets/running-modals/RunningModals'
 import RunningCardWithActions from '@widgets/running-card/RunningCardWithActions'
+import AsyncRunningAggregator from '@widgets/runnning-aggregator/AsyncRunningAggregator'
 const WeeklyPage: React.FC = () => {
   return (
     <section className="space-y-6">
@@ -14,9 +14,7 @@ const WeeklyPage: React.FC = () => {
         <RunningCreateFormButton />
       </header>
 
-      <AsyncBoundary fallback={<RunningAggregatorSkeleton />}>
-        <RunningAggregator />
-      </AsyncBoundary>
+      <AsyncRunningAggregator />
 
       <h2 className="text-2xl font-semibold mt-8 mb-4">주간 러닝 목록</h2>
 
