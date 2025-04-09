@@ -5,7 +5,7 @@ import {
 } from '@heroui/react'
 import StateRender from '@shared/ui/StateRender'
 import { useRunningModal } from '@features/running-modal/hooks/useRunningModal'
-import { Running } from '@entities/running/model/running'
+import { Running } from '@entities/running/model'
 import { UseMutateFunction } from '@tanstack/react-query'
 import AsyncRunningModalContent from './AsyncRunningModalContent'
 interface RunningModalProps {

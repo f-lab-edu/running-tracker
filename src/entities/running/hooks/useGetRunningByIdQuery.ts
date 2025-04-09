@@ -1,5 +1,5 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { fetchRunningById } from "@entities/running/api/runningApi";
+import { fetchRunningById } from "@entities/running/api";
 
 export default function useGetRunningByIdQuery(runningId: string) {
   return useSuspenseQuery({

@@ -2,8 +2,8 @@ import React from 'react'
 import RunningCreateFormButton from '@features/running-form/ui/RunningCreateFormButton'
 import RunningModals from '@widgets/running-modals/RunningModals'
 import RunningCardWithActions from '@widgets/running-card/RunningCardWithActions'
-import AsyncRunningAggregator from '@features/running-aggregator/ui/AsyncRunningAggregator'
-import AsyncRunningList from '@features/running-list/ui/AsyncRunningList'
+import AsyncRunningAggregator from '@features/running-aggregator'
+import AsyncRunningList from '@features/running-list'
 const WeeklyPage: React.FC = () => {
   return (
     <section className="space-y-6">

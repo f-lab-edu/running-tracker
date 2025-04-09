@@ -9,7 +9,7 @@ import {
   CardFooter,
   Tooltip
 } from '@heroui/react'
-import { Running } from '@entities/running/model/running'
+import { Running } from '@entities/running/model'
 import dayjs from '@shared/lib/dayjs'
 import { formatPace, formatLength, formatRunningTime, runningTimeInSeconds } from '@shared/lib/formatters'
 import StateRender from '@shared/ui/StateRender'

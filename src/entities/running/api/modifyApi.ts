@@ -1,4 +1,4 @@
-import { Running } from "@entities/running/model/running"
+import { Running } from "@entities/running/model"
 import api from "@shared/api"
 const BASE_URL = 'runnings'
 

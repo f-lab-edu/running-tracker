@@ -1,9 +1,9 @@
 import { useQueryClient } from "@tanstack/react-query"
 
 import { useMutation } from "@tanstack/react-query"
-import { createRunning } from "@entities/running/api/runningCreateApi"
-import { updateRunning } from "@entities/running/api/runningModifyApi"
-import { Running } from "@entities/running/model/running"
+import { createRunning } from "@entities/running/api/createApi"
+import { updateRunning } from "@entities/running/api/modifyApi"
+import { Running } from "@entities/running/model"
 export default function useUpsertRunningMutation() {
   const queryClient = useQueryClient()
 
@@ -18,7 +18,7 @@ export default function useUpsertRunningMutation() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['runnings'] })
       queryClient.invalidateQueries({ queryKey: ['running-list'] })
-      queryClient.invalidateQueries({ queryKey: ['running-aggregate'] })
+      queryClient.invalidateQueries({ queryKey: ['aggregate'] })
     }
   })
 }

@@ -1,4 +1,4 @@
-import { Running } from '@entities/running/model/running'
+import { Running } from '@entities/running/model'
 import { atom } from 'jotai'
 
 // RunningCreateForm 상태를 위한 atom

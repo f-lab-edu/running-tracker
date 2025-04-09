@@ -1,5 +1,5 @@
 import RunningCard from "@entities/running/ui/RunningCard";
-import { Running } from "@entities/running/model/running";
+import { Running } from "@entities/running/model";
 import { useRunningModal } from "@features/running-modal/hooks/useRunningModal";
 import useToggleRunningAggregateByIdMutation from "@entities/running/hooks/useToggleRunningAggregateByIdMutation";
 

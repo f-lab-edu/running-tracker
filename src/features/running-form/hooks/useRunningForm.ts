@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai'
 import { runningFormAtom } from '@features/running-form/lib/runningFormAtom'
-import { Running } from '@entities/running/model/running'
+import { Running } from '@entities/running/model'
 
 interface useRunningFormResult {
   isOpen: boolean

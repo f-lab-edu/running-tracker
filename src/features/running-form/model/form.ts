@@ -1,4 +1,4 @@
-import { RunningSchema } from '@entities/running/model/running'
+import { RunningSchema } from '@entities/running/model'
 import dayjs from '@shared/lib/dayjs'
 import { calculatePace } from '@shared/lib/formatters'
 import { z } from 'zod'
