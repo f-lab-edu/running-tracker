@@ -1,15 +1,15 @@
 import { Input } from "@heroui/react";
 import { useFormContext } from "react-hook-form";
 
-interface RHFRunningSearchFieldProps {
+interface RHFMinMaxNumberFieldProps {
   minValueKey: string;
   maxValueKey: string;
 }
 
-const RHFRunningSearchField = ({
+const RHFMinMaxNumberField = ({
   minValueKey,
-  maxValueKey,
-}: RHFRunningSearchFieldProps) => {
+  maxValueKey
+}: RHFMinMaxNumberFieldProps) => {
   const { register } = useFormContext()
   return <div className="flex gap-2 items-center">
     <Input
@@ -32,4 +32,4 @@ const RHFRunningSearchField = ({
   </div>
 }
 
-export default RHFRunningSearchField
+export default RHFMinMaxNumberField

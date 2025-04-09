@@ -17,8 +17,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { FiFilter, FiRefreshCw } from 'react-icons/fi'
 import { SearchFilter, SearchFilterSchema, SearchFilterSchemaAsSearchParams, searchParamsToSearchFilter } from '@features/running-list/model/search'
 import StateRender from '@shared/ui/StateRender'
-import MinMaxHumanize from './MinMaxHumanize'
-import RHFRunningSearchField from './RHFRunningSearchField'
+import MinMaxHumanize from '@shared/ui/MinMaxHumanize'
+import RHFMinMaxNumberField from '@shared/ui/RHFMinMaxNumberField'
 const defaultFilter: SearchFilter = {
   minLength: null,
   maxLength: null,
@@ -115,7 +115,7 @@ const RunningSearchFilter: React.FC = () => {
                   </span>
                 }
               >
-                <RHFRunningSearchField
+                <RHFMinMaxNumberField
                   minValueKey="minLength"
                   maxValueKey="maxLength"
                 />
@@ -135,7 +135,7 @@ const RunningSearchFilter: React.FC = () => {
                   </span>
                 }
               >
-                <RHFRunningSearchField
+                <RHFMinMaxNumberField
                   minValueKey="minTime"
                   maxValueKey="maxTime"
                 />
@@ -155,7 +155,7 @@ const RunningSearchFilter: React.FC = () => {
                   </span>
                 }
               >
-                <RHFRunningSearchField
+                <RHFMinMaxNumberField
                   minValueKey="minPace"
                   maxValueKey="maxPace"
                 />
