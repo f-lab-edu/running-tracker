@@ -1,5 +1,5 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { fetchCurrentWeekAggregate } from "./aggregateApi";
+import { fetchCurrentWeekAggregate } from "@entities/running-aggregator/api/aggregateApi";
 
 export default function useGetAggregate() {
   return useSuspenseQuery({

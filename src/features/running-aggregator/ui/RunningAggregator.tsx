@@ -1,7 +1,7 @@
 import { Card, CardBody, Divider } from '@heroui/react'
 import { formatLength, formatRunningTime, formatPace } from '@shared/lib/formatters'
 import StateRender from '@shared/ui/StateRender'
-import useGetAggregate from '@features/running-aggregator/api/useGetAggregate'
+import useGetAggregate from '@features/running-aggregator/hooks/useGetAggregate'
 export const RunningAggregator: React.FC = () => {
   // 현재 주간 집계 데이터 조회
   const { data: aggregate } = useGetAggregate()

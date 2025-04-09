@@ -1,5 +1,5 @@
-import { Aggregate } from '@features/running-aggregator/model/aggregate'
-import dayjs from '@shared/dayjs'
+import { Aggregate } from '@entities/running-aggregator/model/aggregate'
+import dayjs from '@shared/lib/dayjs'
 import api from '@shared/api'
 
 const BASE_URL = 'aggregates/weekly'
