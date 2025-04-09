@@ -1,10 +1,10 @@
 import { Input, ModalHeader, ModalBody, ModalFooter, Button, Checkbox, Textarea } from "@heroui/react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import dayjs from "@shared/dayjs";
+import dayjs from "@shared/lib/dayjs";
 import { RunningFormObject, RunningFormSchema, RunningForm, RunningFormDefaultValues, RunningFormTransform, DataAsRunningForm } from "@features/running-form/model/runningForm";
-import { calculatePace } from "@shared/formatters";
-import StateRender from "@shared/StateRender";
+import { calculatePace } from "@shared/lib/formatters";
+import StateRender from "@shared/ui/StateRender";
 interface RunningFormContentProps {
   handleCloseModal: () => void
   data?: RunningFormObject | null

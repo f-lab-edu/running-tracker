@@ -16,7 +16,7 @@ import { useForm, SubmitHandler, FormProvider } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FiFilter, FiRefreshCw } from 'react-icons/fi'
 import { SearchFilter, SearchFilterSchema, SearchFilterSchemaAsSearchParams, searchParamsToSearchFilter } from '@features/running-list/model/search'
-import StateRender from '@shared/StateRender'
+import StateRender from '@shared/ui/StateRender'
 import MinMaxHumanize from './MinMaxHumanize'
 import RHFRunningSearchField from './RHFRunningSearchField'
 const defaultFilter: SearchFilter = {

@@ -1,6 +1,6 @@
 import { ModalFooter, ModalBody, ModalHeader, Button, Switch, Spinner } from "@heroui/react";
-import { formatLength, formatPace, runningTimeInSeconds, formatDateTime, formatRunningTime } from "@shared/formatters";
-import StateRender from "@shared/StateRender";
+import { formatLength, formatPace, runningTimeInSeconds, formatDateTime, formatRunningTime } from "@shared/lib/formatters";
+import StateRender from "@shared/ui/StateRender";
 import useGetRunningByIdQuery from "@entities/running/hooks/useGetRunningByIdQuery";
 import { Running } from "@entities/running/model/running";
 interface RunningModalContentProps {

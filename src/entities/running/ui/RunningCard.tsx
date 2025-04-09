@@ -10,9 +10,9 @@ import {
   Tooltip
 } from '@heroui/react'
 import { Running } from '@entities/running/model/running'
-import dayjs from '@shared/dayjs'
-import { formatPace, formatLength, formatRunningTime, runningTimeInSeconds } from '@shared/formatters'
-import StateRender from '@shared/StateRender'
+import dayjs from '@shared/lib/dayjs'
+import { formatPace, formatLength, formatRunningTime, runningTimeInSeconds } from '@shared/lib/formatters'
+import StateRender from '@shared/ui/StateRender'
 
 interface RunningCardProps {
   running: Running

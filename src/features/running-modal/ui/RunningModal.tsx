@@ -3,8 +3,8 @@ import {
   Modal,
   ModalContent,
 } from '@heroui/react'
-import StateRender from '@shared/StateRender'
-import { AsyncBoundary } from '@shared/AsyncBoundary'
+import StateRender from '@shared/ui/StateRender'
+import { AsyncBoundary } from '@shared/ui/AsyncBoundary'
 import RunningModalContent from './RunningModalContent'
 import RunningModalSkeleton from './RunningModalSkeleton'
 import { useRunningModal } from '@features/running-modal/hooks/useRunningModal'

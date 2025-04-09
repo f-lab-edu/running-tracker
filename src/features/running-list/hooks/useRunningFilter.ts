@@ -1,5 +1,5 @@
 import { useSearchParams } from 'react-router-dom'
-import dayjs from '@shared/dayjs'
+import dayjs from '@shared/lib/dayjs'
 import { SearchFilter, searchParamsToSearchFilter } from '@features/running-list/model/search'
 
 interface UseRunningFilterOptions {

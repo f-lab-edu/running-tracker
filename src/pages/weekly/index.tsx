@@ -1,7 +1,7 @@
 import React from 'react'
 import { RunningList } from '@features/running-list/ui/RunningList'
 import { RunningAggregator, RunningAggregatorSkeleton } from '@features/running-aggregator'
-import { AsyncBoundary } from '@shared/AsyncBoundary'
+import { AsyncBoundary } from '@shared/ui/AsyncBoundary'
 import RunningListSkeleton from '@features/running-list/ui/RunningListSkeleton'
 import RunningCreateFormButton from '@features/running-form/ui/RunningCreateFormButton'
 import RunningModals from '@widgets/running-modals/RunningModals'

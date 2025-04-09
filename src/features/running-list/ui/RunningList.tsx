@@ -1,5 +1,5 @@
 import React from 'react'
-import StateRender from '@shared/StateRender'
+import StateRender from '@shared/ui/StateRender'
 import { useRunningFilter } from '@features/running-list/hooks/useRunningFilter'
 import useRunningListQuery from '@features/running-list/hooks/useRunningListQuery'
 import { Running } from '@entities/running/model/running'

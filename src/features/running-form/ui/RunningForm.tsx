@@ -1,7 +1,7 @@
 import React from 'react'
 import { Modal, ModalContent } from '@heroui/react'
 import RunningFormContent from './RunningFormContent'
-import StateRender from '@shared/StateRender'
+import StateRender from '@shared/ui/StateRender'
 import { useRunningForm } from '@features/running-form/hooks/useRunningForm'
 import { RunningFormObject } from '../model/runningForm'
 import { Running } from '@entities/running/model/running'

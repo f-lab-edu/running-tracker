@@ -1,6 +1,6 @@
 import { RunningSchema } from '@entities/running/model/running'
-import dayjs from '@shared/dayjs'
-import { calculatePace } from '@shared/formatters'
+import dayjs from '@shared/lib/dayjs'
+import { calculatePace } from '@shared/lib/formatters'
 import { z } from 'zod'
 
 export const RunningCreateSchema = RunningSchema.omit({ id: true }).extend({

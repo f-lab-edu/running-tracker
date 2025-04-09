@@ -1,4 +1,4 @@
-import StateRender from "@shared/StateRender";
+import StateRender from "@shared/ui/StateRender";
 
 type FilterState = '11' | '10' | '01' | '00'
 
