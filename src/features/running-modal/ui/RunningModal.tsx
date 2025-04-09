@@ -4,12 +4,10 @@ import {
   ModalContent,
 } from '@heroui/react'
 import StateRender from '@shared/ui/StateRender'
-import { AsyncBoundary } from '@shared/ui/AsyncBoundary'
-import RunningModalContent from './RunningModalContent'
-import RunningModalSkeleton from './RunningModalSkeleton'
 import { useRunningModal } from '@features/running-modal/hooks/useRunningModal'
 import { Running } from '@entities/running/model/running'
 import { UseMutateFunction } from '@tanstack/react-query'
+import AsyncRunningModalContent from './AsyncRunningModalContent'
 interface RunningModalProps {
   onModifyOpen?: (running: Running) => void,
   onDelete?: UseMutateFunction<void, Error, string>,
@@ -52,18 +50,14 @@ const RunningModal: React.FC<RunningModalProps> = ({
         <StateRender.Boolean
           state={runningId}
           render={{
-            true: () => <AsyncBoundary
-              fallback={<RunningModalSkeleton />}
-            >
-              <RunningModalContent
-                runningId={runningId || ''}
-                handleToggleAggregate={handleToggleAggregate}
-                handleDelete={handleDelete}
-                isDeleting={isDeleting}
-                closeModal={closeModal}
-                onModifyOpen={onModifyOpen}
-              />
-            </AsyncBoundary>
+            true: () => <AsyncRunningModalContent
+              runningId={runningId || ''}
+              handleToggleAggregate={handleToggleAggregate}
+              handleDelete={handleDelete}
+              isDeleting={isDeleting}
+              closeModal={closeModal}
+              onModifyOpen={onModifyOpen}
+            />
           }}
         />
       </ModalContent>

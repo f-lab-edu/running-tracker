@@ -4,7 +4,7 @@ import { useRunningFilter } from '@features/running-list/hooks/useRunningFilter'
 import useRunningListQuery from '@features/running-list/hooks/useRunningListQuery'
 import { Running } from '@entities/running/model/running'
 
-interface RunningListProps {
+export interface RunningListProps {
   daily?: boolean
   weekly?: boolean
   children?: (running: Running) => React.ReactNode

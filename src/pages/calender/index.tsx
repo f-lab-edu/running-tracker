@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
-import { RunningList } from '@features/running-list/ui/RunningList'
 import { Calendar } from '@heroui/react'
 import dayjs from '@shared/lib/dayjs'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { parseDate, today, CalendarDate } from '@internationalized/date'
-import RunningListSkeleton from '@features/running-list/ui/RunningListSkeleton'
-import { AsyncBoundary } from '@shared/ui/AsyncBoundary'
 import RunningCreateFormButton from '@features/running-form/ui/RunningCreateFormButton'
 import RunningModals from '@widgets/running-modals/RunningModals'
 import RunningCardWithActions from '@widgets/running-card/RunningCardWithActions'
+import AsyncRunningList from '@features/running-list/ui/AsyncRunningList'
 const CalenderPage: React.FC = () => {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
@@ -38,17 +36,13 @@ const CalenderPage: React.FC = () => {
         {dayjs(selectedDate.toString()).format('YYYY년 MM월 DD일')} 러닝 목록
       </h2>
 
-      <AsyncBoundary fallback={
-        <RunningListSkeleton />
-      }>
-        <RunningList daily>
-          {(running) => (
-            <RunningCardWithActions
-              running={running}
-            />
-          )}
-        </RunningList>
-      </AsyncBoundary>
+      <AsyncRunningList daily>
+        {(running) => (
+          <RunningCardWithActions
+            running={running}
+          />
+        )}
+      </AsyncRunningList>
       <RunningModals />
     </section>
   )

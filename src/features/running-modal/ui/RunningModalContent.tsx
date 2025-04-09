@@ -3,7 +3,7 @@ import { formatLength, formatPace, runningTimeInSeconds, formatDateTime, formatR
 import StateRender from "@shared/ui/StateRender";
 import useGetRunningByIdQuery from "@entities/running/hooks/useGetRunningByIdQuery";
 import { Running } from "@entities/running/model/running";
-interface RunningModalContentProps {
+export interface RunningModalContentProps {
   runningId: string
   isDeleting: boolean
   handleToggleAggregate: (checked: boolean) => Promise<void>
