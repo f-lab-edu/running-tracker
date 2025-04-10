@@ -19,7 +19,7 @@ export const formatTime = (time: number) => {
  * @returns formatted distance
  */
 export const formatDistance = (distance: number) => {
-  return (distance / 1000).toFixed(2);
+  return (distance).toFixed(2);
 }
 
 /**
