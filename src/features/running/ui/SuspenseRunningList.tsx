@@ -11,7 +11,7 @@ interface SuspenseRunningListProps extends Omit<RunningCardProps, 'running'> {
 const SuspenseRunningList: React.FC<SuspenseRunningListProps> = (props) => {
   const { searchOption, ...rest } = props
   const { data: runningList } = useGetRunningListQuery(searchOption)
-  return <ItemList<Running> items={runningList ?? []}>
+  return <ItemList<Running> items={runningList ?? []} className="grid grid-cols-1 gap-4 md:grid-cols-2">
     {(running) => <RunningCard running={running} {...rest} />}
   </ItemList>
 }
