@@ -29,7 +29,7 @@ const RunningForm = (props: RunningFormProps) => {
   const endTime = watch('endTime')
   const startTime = watch('startTime')
   const length = watch('length')
-  const pace = useMemo(() => String(getPace(length, dayjs(endTime).diff(dayjs(startTime), 'seconds'))), [length, endTime, startTime])
+  const pace = useMemo(() => String(getPace(length, dayjs(endTime).diff(dayjs(startTime), 'seconds')) / 60), [length, endTime, startTime])
 
   return <form onSubmit={handleSubmit(handleSubmitAction)}>
     <ModalHeader className="flex flex-col gap-1">

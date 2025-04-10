@@ -34,7 +34,7 @@ export const RunningAsFormData = RunningCreateSchema.transform(data => {
   const length = data.length
   const startTime = dayjs(data.startTime).valueOf()
   const endTime = dayjs(data.endTime).valueOf()
-  const pace = getPace(length, endTime - startTime)
+  const pace = getPace(length, endTime - startTime) / 60000
   return { ...data, startTime, endTime, pace }
 })
 
