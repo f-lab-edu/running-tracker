@@ -33,7 +33,7 @@ const defaultFilter: SearchOption = {
 }
 
 
-const RunningSearchFilter: React.FC = () => {
+const SearchForm: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams()
   const [isFilterExpanded, setIsFilterExpanded] = useState(false)
 
@@ -198,4 +198,4 @@ const RunningSearchFilter: React.FC = () => {
   )
 }
 
-export default RunningSearchFilter 
+export default SearchForm 
