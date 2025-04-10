@@ -3,7 +3,33 @@ import { z } from 'zod'
 
 export type SearchFilter = BaseSearchFilter
 
-export const SearchFilterSchemaAsSearchParams = SearchFilterSchema.transform((data) => {
+export const SearchFilterRule = SearchFilterSchema.refine((data) => {
+  if (data.minLength && data.maxLength && data.minLength > data.maxLength) {
+    return false
+  }
+  return true
+}, {
+  message: '최소 거리는 최대 거리보다 작아야 합니다.',
+  path: ['minLength', 'maxLength']
+}).refine((data) => {
+  if (data.minTime && data.maxTime && data.minTime > data.maxTime) {
+    return false
+  }
+  return true
+}, {
+  message: '최소 시간은 최대 시간보다 작아야 합니다.',
+  path: ['minTime', 'maxTime']
+}).refine((data) => {
+  if (data.minPace && data.maxPace && data.minPace > data.maxPace) {
+    return false
+  }
+  return true
+}, {
+  message: '최소 페이스는 최대 페이스보다 작아야 합니다.',
+  path: ['minPace', 'maxPace']
+})
+
+export const SearchFilterSchemaAsSearchParams = SearchFilterRule.transform((data) => {
   const searchParams = new URLSearchParams()
   if (data.minLength) searchParams.set('minLength', data.minLength.toString())
   if (data.maxLength) searchParams.set('maxLength', data.maxLength.toString())

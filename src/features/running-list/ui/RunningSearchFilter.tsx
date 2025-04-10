@@ -15,7 +15,7 @@ import {
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FiFilter, FiRefreshCw } from 'react-icons/fi'
-import { SearchFilter, SearchFilterSchema, SearchFilterSchemaAsSearchParams, searchParamsToSearchFilter } from '@features/running-list/model/search'
+import { SearchFilter, SearchFilterRule, SearchFilterSchemaAsSearchParams, searchParamsToSearchFilter } from '@features/running-list/model/search'
 import StateRender from '@shared/ui/StateRender'
 import MinMaxHumanize from '@shared/ui/MinMaxHumanize'
 import RHFMinMaxNumberField from '@shared/ui/RHFMinMaxNumberField'
@@ -36,7 +36,7 @@ const RunningSearchFilter: React.FC = () => {
 
   // react-hook-form 설정
   const form = useForm<SearchFilter>({
-    resolver: zodResolver(SearchFilterSchema),
+    resolver: zodResolver(SearchFilterRule),
     defaultValues: defaultFilter,
     values: searchParamsToSearchFilter(searchParams),
   })
