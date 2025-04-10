@@ -18,6 +18,8 @@ export const RunningFormDefaultValues = RunningCreateSchema.parse({
   location: '',
   memo: '',
   isAggregate: false,
+  runningDuration: 0,
+  speed: 0
 })
 
 export const RunningFormSchema = RunningCreateSchema.refine(
