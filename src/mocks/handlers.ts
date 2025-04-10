@@ -135,7 +135,7 @@ export const handlers = [
   }),
 
   // 러닝 집계 토글
-  http.patch('/api/running/:id/toggle-aggregate', async ({ params, request }) => {
+  http.put('/api/running/:id/aggregate', async ({ params, request }) => {
     await delay(200)
     const { id } = params
     const data = await request.json()
