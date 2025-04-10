@@ -1,15 +1,15 @@
 import ky from "ky";
 
-const api = ky.create({
+const apiObj = ky.create({
   prefixUrl: import.meta.env.VITE_API_URL,
 })
 
-const apiProxy = {
-  get: (...args: Parameters<typeof api.get>) => api.get(...args).json(),
-  post: (...args: Parameters<typeof api.post>) => api.post(...args).json(),
-  put: (...args: Parameters<typeof api.put>) => api.put(...args).json(),
-  delete: (...args: Parameters<typeof api.delete>) => api.delete(...args).json(),
-  patch: (...args: Parameters<typeof api.patch>) => api.patch(...args).json(),
+const api = {
+  get: <T>(...args: Parameters<typeof apiObj.get>) => apiObj.get(...args).json<T>(),
+  post: <T>(...args: Parameters<typeof apiObj.post>) => apiObj.post(...args).json<T>(),
+  put: <T>(...args: Parameters<typeof apiObj.put>) => apiObj.put(...args).json<T>(),
+  delete: <T>(...args: Parameters<typeof apiObj.delete>) => apiObj.delete(...args).json<T>(),
+  patch: <T>(...args: Parameters<typeof apiObj.patch>) => apiObj.patch(...args).json<T>(),
 }
 
-export default apiProxy;
+export default api;
