@@ -1,6 +1,4 @@
-import { useQueryClient } from "@tanstack/react-query"
-
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { createRunning } from "@entities/running/api/createApi"
 import { updateRunning } from "@entities/running/api/modifyApi"
 import { Running } from "@entities/running/model"

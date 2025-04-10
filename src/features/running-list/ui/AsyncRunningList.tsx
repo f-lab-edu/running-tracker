@@ -4,8 +4,9 @@ import RunningListSkeleton from "./RunningListSkeleton";
 
 
 
-export default function AsyncRunningList(props: RunningListProps) {
+const AsyncRunningList: React.FC<RunningListProps> = (props) => {
   return <AsyncBoundary fallback={<RunningListSkeleton />}>
     <RunningList {...props} />
   </AsyncBoundary>
 }
+export default AsyncRunningList

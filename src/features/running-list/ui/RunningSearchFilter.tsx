@@ -107,8 +107,8 @@ const RunningSearchFilter: React.FC = () => {
                 startContent={
                   <span className="text-small text-primary">
                     <MinMaxHumanize
-                      min={filterValues.minLength || 0}
-                      max={filterValues.maxLength || 0}
+                      min={filterValues.minLength ?? 0}
+                      max={filterValues.maxLength ?? 0}
                       unit="km"
                       allText="모든 거리"
                     />
@@ -127,8 +127,8 @@ const RunningSearchFilter: React.FC = () => {
                 startContent={
                   <span className="text-small text-primary">
                     <MinMaxHumanize
-                      min={filterValues.minTime || 0}
-                      max={filterValues.maxTime || 0}
+                      min={filterValues.minTime ?? 0}
+                      max={filterValues.maxTime ?? 0}
                       unit="분"
                       allText="모든 시간"
                     />
@@ -147,8 +147,8 @@ const RunningSearchFilter: React.FC = () => {
                 startContent={
                   <span className="text-small text-primary">
                     <MinMaxHumanize
-                      min={filterValues.minPace || 0}
-                      max={filterValues.maxPace || 0}
+                      min={filterValues.minPace ?? 0}
+                      max={filterValues.maxPace ?? 0}
                       unit="분/km"
                       allText="모든 페이스"
                     />

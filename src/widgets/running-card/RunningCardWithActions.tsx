@@ -7,9 +7,9 @@ interface RunningCardWithActionsProps {
   running: Running
 }
 
-export default function RunningCardWithActions({
+const RunningCardWithActions: React.FC<RunningCardWithActionsProps> = ({
   running,
-}: RunningCardWithActionsProps) {
+}) => {
   const { openModal } = useRunningModal()
   const { mutate: toggleAggregate } = useToggleRunningAggregateByIdMutation()
   return <RunningCard
@@ -18,3 +18,4 @@ export default function RunningCardWithActions({
     onCardClick={openModal}
   />
 }
+export default RunningCardWithActions

@@ -54,7 +54,7 @@ export const DefaultErrorContent: React.FC<DefaultErrorContentProps> = ({
             showArrow={true}
           >
             <p className="cursor-help">
-              {error?.message || '알 수 없는 오류가 발생했습니다.'}
+              {error?.message ?? '알 수 없는 오류가 발생했습니다.'}
             </p>
           </Tooltip>
         </Alert>

@@ -9,7 +9,7 @@ interface MinMaxHumanizeProps {
   unit: string
 }
 
-export default function MinMaxHumanize({ min, max, allText, unit }: MinMaxHumanizeProps) {
+const MinMaxHumanize: React.FC<MinMaxHumanizeProps> = ({ min, max, allText, unit }) => {
   return <StateRender
     state={(min ? '1' : '0') + (max ? '1' : '0') as FilterState}
     render={{
@@ -20,3 +20,4 @@ export default function MinMaxHumanize({ min, max, allText, unit }: MinMaxHumani
     }}
   />
 }
+export default MinMaxHumanize

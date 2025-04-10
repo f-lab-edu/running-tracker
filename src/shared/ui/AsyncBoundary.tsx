@@ -44,7 +44,7 @@ export const AsyncBoundary: FC<AsyncBoundaryProps> = (props) => {
                 <Spinner size={spinnerSize} color={spinnerColor} />
               </div>
             ),
-            false: () => fallback || null
+            false: () => fallback ?? null
           }}
         />
       }>

@@ -43,67 +43,67 @@ const RunningFormContent: FC<RunningFormContentProps> = ({ handleCloseModal, onS
         <li>
           <label className="block text-small font-medium mb-1">
             거리 (km)<span className="text-red-500">*</span>
+            <Input
+              type="number"
+              step={0.01}
+              isRequired
+              isInvalid={!!errors.length}
+              errorMessage={errors.length?.message}
+              {...register('length', {
+                valueAsNumber: true,
+                min: 0,
+              })}
+            />
           </label>
-          <Input
-            type="number"
-            step={0.01}
-            isRequired
-            isInvalid={!!errors.length}
-            errorMessage={errors.length?.message}
-            {...register('length', {
-              valueAsNumber: true,
-              min: 0,
-            })}
-          />
         </li>
         <li>
           <label className="block text-small font-medium mb-1">
             위치<span className="text-red-500">*</span>
+            <Input
+              type="text"
+              isRequired
+              isInvalid={!!errors.location}
+              errorMessage={errors.location?.message}
+              {...register('location')}
+            />
           </label>
-          <Input
-            type="text"
-            isRequired
-            isInvalid={!!errors.location}
-            errorMessage={errors.location?.message}
-            {...register('location')}
-          />
         </li>
         <li>
           <label className="block text-small font-medium mb-1">
             시작 시간<span className="text-red-500">*</span>
+            <Input
+              type="datetime-local"
+              isRequired
+              isInvalid={!!errors.startDateTime}
+              errorMessage={errors.startDateTime?.message}
+              {...register('startDateTime')}
+            />
           </label>
-          <Input
-            type="datetime-local"
-            isRequired
-            isInvalid={!!errors.startDateTime}
-            errorMessage={errors.startDateTime?.message}
-            {...register('startDateTime')}
-          />
         </li>
         <li>
           <label className="block text-small font-medium mb-1">
             종료 시간<span className="text-red-500">*</span>
+            <Input
+              type="datetime-local"
+              isRequired
+              isInvalid={!!errors.endDateTime}
+              errorMessage={errors.endDateTime?.message}
+              {...register('endDateTime')}
+            />
           </label>
-          <Input
-            type="datetime-local"
-            isRequired
-            isInvalid={!!errors.endDateTime}
-            errorMessage={errors.endDateTime?.message}
-            {...register('endDateTime')}
-          />
         </li>
 
         <li className="col-span-2">
           <label className="block text-small font-medium mb-1">
             페이스 (분/km)
+            <Input
+              type="number"
+              min="0"
+              step="0.01"
+              isDisabled
+              value={String(pace)}
+            />
           </label>
-          <Input
-            type="number"
-            min="0"
-            step="0.01"
-            isDisabled
-            value={String(pace)}
-          />
           <p className="text-small text-default-500 mt-1">
             * 거리와 시간에 따라 자동 계산됩니다.
           </p>
@@ -112,13 +112,13 @@ const RunningFormContent: FC<RunningFormContentProps> = ({ handleCloseModal, onS
         <li className="col-span-2">
           <label className="block text-small font-medium mb-1">
             메모
+            <Textarea
+              rows={3}
+              isInvalid={!!errors.memo}
+              errorMessage={errors.memo?.message}
+              {...register('memo')}
+            />
           </label>
-          <Textarea
-            rows={3}
-            isInvalid={!!errors.memo}
-            errorMessage={errors.memo?.message}
-            {...register('memo')}
-          />
         </li>
 
         <li className="col-span-2">
