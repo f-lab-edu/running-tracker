@@ -1,4 +1,4 @@
-import { Aggregate } from '@entities/running-aggregator/model/aggregate'
+import { Aggregate } from '@features/running-aggregator/model/aggregate'
 import dayjs from '@shared/lib/dayjs'
 import api from '@shared/api'
 
