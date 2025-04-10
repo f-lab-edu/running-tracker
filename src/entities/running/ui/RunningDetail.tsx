@@ -10,14 +10,14 @@ interface RunningDetailProps {
   isDeleting: boolean;
   onClickDelete?: (running: Running) => void;
   onClickModify?: (running: Running) => void;
-  onToggleAggregate: (props: ToggleAggregateProps) => void;
+  onToggleAggregate?: (props: ToggleAggregateProps) => void;
 }
 
 export const RunningDetail: FC<RunningDetailProps> = (props) => {
   const { running, onClickClose, onClickDelete, onClickModify, onToggleAggregate, isDeleting } = props;
   const { id, length, startTime, location, memo, isAggregate, runningDuration, pace } = running;
   const handleToggleAggregate = (isAggregate: boolean) => {
-    onToggleAggregate({ id, isAggregate });
+    onToggleAggregate?.({ id, isAggregate });
   }
   return <>
     <ModalHeader className="flex flex-col gap-1 border-b pb-4">
@@ -25,11 +25,16 @@ export const RunningDetail: FC<RunningDetailProps> = (props) => {
         <h3 className="text-lg font-bold">러닝 상세</h3>
         <div className="flex items-center gap-2">
           <span className="text-sm text-default-500">집계 포함</span>
-          <Switch
-            isSelected={isAggregate}
-            onChange={(e) => handleToggleAggregate(e.target.checked)}
-            size="sm"
-            color="primary"
+          <BooleanRender
+            state={onToggleAggregate}
+            render={{
+              true: () => <Switch
+                isSelected={isAggregate}
+                onChange={(e) => handleToggleAggregate(e.target.checked)}
+                size="sm"
+                color="primary"
+              />
+            }}
           />
         </div>
       </div>
