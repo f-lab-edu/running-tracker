@@ -23,10 +23,11 @@
     "noUncheckedSideEffectImports": true,
     "paths": {
       "@entities/*": ["./src/entities/*"],
-      "@featured/*": ["./src/featured/*"],
+      "@features/*": ["./src/features/*"],
       "@shared/*": ["./src/shared/*"],
       "@pages/*": ["./src/pages/*"],
-      "@app/*": ["./src/app/*"]
+      "@app/*": ["./src/app/*"],
+      "@widgets/*": ["./src/widgets/*"]
     }
   },
   "include": ["src"]

@@ -9,14 +9,14 @@ import {
   CardFooter,
   Tooltip
 } from '@heroui/react'
-import { Running } from '@entities/running/model/running'
-import dayjs from '@shared/dayjs'
-import { formatPace, formatLength, formatRunningTime, runningTimeInSeconds } from '@shared/formatters'
-import StateRender from '@shared/StateRender'
+import { Running } from '@entities/running/model'
+import dayjs from '@shared/lib/dayjs'
+import { formatPace, formatLength, formatRunningTime, runningTimeInSeconds } from '@shared/lib/formatters'
+import StateRender from '@shared/ui/StateRender'
 
 interface RunningCardProps {
   running: Running
-  onToggleAggregate: (id: string, isAggregate: boolean) => void
+  onToggleAggregate: (params: { id: string, isAggregate: boolean }) => void
   onCardClick: (id: string) => void
 }
 
@@ -27,7 +27,7 @@ const RunningCard: React.FC<RunningCardProps> = ({
 }) => {
   const handleToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.stopPropagation()
-    onToggleAggregate(running.id, event.target.checked)
+    onToggleAggregate({ id: running.id, isAggregate: event.target.checked })
   }
 
   const seconds = runningTimeInSeconds(running.endDateTime, running.startDateTime)

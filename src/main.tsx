@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import '@app/style/index.css'
-import App from '@app/app'
+import App from '@app/index'
 
 // MSW 개발 환경에서만 활성화
 async function enableMocking() {

@@ -9,7 +9,7 @@ import {
 
 const DefaultLayout: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div aria-label="nav bar" className="min-h-screen bg-gray-50">
       <Navbar>
         <NavbarBrand>
           <p className="font-bold text-inherit">러닝 트래커</p>
@@ -18,7 +18,7 @@ const DefaultLayout: React.FC = () => {
           <NavbarItem>
             <NavLink
               to="/"
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 isActive ? "text-primary font-medium" : "text-foreground/70"
               }
               end
@@ -29,7 +29,7 @@ const DefaultLayout: React.FC = () => {
           <NavbarItem>
             <NavLink
               to="/weekly"
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 isActive ? "text-primary font-medium" : "text-foreground/70"
               }
             >
@@ -39,7 +39,7 @@ const DefaultLayout: React.FC = () => {
           <NavbarItem>
             <NavLink
               to="/calender"
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 isActive ? "text-primary font-medium" : "text-foreground/70"
               }
             >

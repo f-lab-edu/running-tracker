@@ -1,26 +1,28 @@
 import React from 'react'
-import { RunningList } from '../../featured/running-list/ui/RunningList'
-import RunningSearchFilter from '../../featured/running-list/ui/RunningSearchFilter'
-import RunningCreateFormButton from '../../featured/running-form/ui/RunningCreateFormButton'
-import { AsyncBoundary } from '@shared/AsyncBoundary'
-import RunningListSkeleton from '@featured/running-list/ui/RunningListSkeleton'
-
+import RunningSearchFilter from '@features/running-list/ui/RunningSearchFilter'
+import RunningCreateFormButton from '@features/running-form/ui/RunningCreateFormButton'
+import RunningModals from '@widgets/running-modals/RunningModals'
+import RunningCardWithActions from '@widgets/running-card/RunningCardWithActions'
+import AsyncRunningList from '@features/running-list/ui/AsyncRunningList'
 const IndexPage: React.FC = () => {
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between mb-4">
+    <section className="space-y-6">
+      <header className="flex items-center justify-between mb-4">
         <h1 className="text-3xl font-bold">일간 러닝 기록</h1>
         <RunningCreateFormButton />
-      </div>
+      </header>
 
       <RunningSearchFilter />
 
-      <AsyncBoundary fallback={
-        <RunningListSkeleton />
-      }>
-        <RunningList />
-      </AsyncBoundary>
-    </div>
+      <AsyncRunningList>
+        {(running) => (
+          <RunningCardWithActions
+            running={running}
+          />
+        )}
+      </AsyncRunningList>
+      <RunningModals />
+    </section>
   )
 }
 
