@@ -171,7 +171,7 @@ export const handlers = [
   }),
 
   // 주간 통계 조회
-  http.get('/api/aggregates/weekly', async ({ request }) => {
+  http.get('/api/aggregate', async ({ request }) => {
     await delay(500)
     const url = new URL(request.url)
     const startDate = url.searchParams.get('startDate')
