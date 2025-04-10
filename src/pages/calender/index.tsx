@@ -1,5 +1,5 @@
 import { Calendar } from "@heroui/react"
-import RunningListWithFilter from "@widgets/list-with-filter/RunningListWithFilter"
+import RunningListWithFilter from "@widgets/list-with-filter/ui/RunningListWithFilter"
 import CreateModalBtn from "@widgets/running-modal/ui/CreateModalBtn"
 import { CalendarDate, parseDate, today } from '@internationalized/date'
 import dayjs from "dayjs"

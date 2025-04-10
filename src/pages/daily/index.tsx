@@ -1,4 +1,4 @@
-import RunningListWithFilter from "@widgets/list-with-filter/RunningListWithFilter"
+import RunningListWithFilter from "@widgets/list-with-filter/ui/RunningListWithFilter"
 import { useRunningModal } from "@widgets/running-modal/hooks/useRunningModal"
 import CreateModalBtn from "@widgets/running-modal/ui/CreateModalBtn"
 import RunningModal from "@widgets/running-modal/ui/RunningModal"
