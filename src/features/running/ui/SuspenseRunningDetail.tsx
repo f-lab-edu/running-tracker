@@ -3,13 +3,15 @@ import { RunningDetail } from "@entities/running/ui/RunningDetail"
 import { useState } from "react"
 import { useDeleteRunningMutation } from "../model/useDeleteRunningMutation.ts"
 import { useToggleRunningMutation } from "../model/useToggleRunningMutation.ts"
+import { Running } from "@entities/running/constant/running"
 interface SuspenseRunningDetailProps {
   id: string
   onClickClose: () => void
+  onClickModify: (running: Running) => void
 }
 
 const SuspenseRunningDetail = (props: SuspenseRunningDetailProps) => {
-  const { id, onClickClose } = props
+  const { id, onClickClose, onClickModify } = props
   const { data } = useGetRunningQuery(id)
   const [isDeleting, setIsDeleting] = useState(false)
   const { mutate: deleteRunning } = useDeleteRunningMutation()
@@ -35,6 +37,7 @@ const SuspenseRunningDetail = (props: SuspenseRunningDetailProps) => {
     onClickClose={onClickClose}
     isDeleting={isDeleting}
     onClickDelete={handleDelete}
+    onClickModify={onClickModify}
     onToggleAggregate={toggleAggregateRunning}
   />
 }

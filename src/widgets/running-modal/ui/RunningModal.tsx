@@ -11,16 +11,22 @@ import { useUpdateRunningMutation } from "@features/running/model/useUpdateRunni
 import { useInsertRunningMutation } from "@features/running/model/useInsertRunningMutation"
 import { Running } from "@entities/running/constant/running"
 const RunningModal = () => {
-  const { runningModal, closeRunningModal } = useRunningModal()
+  const { runningModal, closeRunningModal, openRunningModal } = useRunningModal()
+
   const { mutate: updateRunning } = useUpdateRunningMutation()
   const { mutate: insertRunning } = useInsertRunningMutation()
+
+  const handleUpdateRunning = (running: Running) => {
+    openRunningModal('update', running)
+  }
+
   return <Modal isOpen={Boolean(runningModal.type)} onClose={closeRunningModal} hideCloseButton>
     <ModalContent>
       <EnumRender
         state={runningModal.type ?? 'null'}
         render={{
           detail: () => runningModal.running && <AsyncBoundary pendingFallback={<RunningListSkeleton />}>
-            <SuspenseRunningDetail id={runningModal.running?.id} onClickClose={closeRunningModal} />
+            <SuspenseRunningDetail id={runningModal.running?.id} onClickClose={closeRunningModal} onClickModify={handleUpdateRunning} />
           </AsyncBoundary>,
           insert: () => <RunningForm onClose={closeRunningModal} onSubmit={insertRunning} />,
           update: () => runningModal.running && <RunningForm running={runningModal.running} onClose={closeRunningModal} onSubmit={(running) => {
