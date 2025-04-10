@@ -3,7 +3,7 @@ import { Running, ToggleAggregateProps } from "../constant/running";
 import { formatDateTime, formatDistance, formatPace, formatTime } from "@shared/lib/formatter";
 import { BooleanRender } from "@shared/ui/StateRender";
 
-interface RunningCardProps {
+export interface RunningCardProps {
   running: Running
   onClick: (running: Running) => void;
   onToggleAggregate: (props: ToggleAggregateProps) => void;
