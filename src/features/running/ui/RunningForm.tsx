@@ -18,7 +18,7 @@ const RunningForm = (props: RunningFormProps) => {
   const { register, handleSubmit, watch, formState: { errors, isSubmitting } } = useForm({
     defaultValues: RunningFormDefaultValues,
     resolver: zodResolver(RunningFormSchema),
-    values: FormDataAsRunning.parse(running),
+    values: running ? FormDataAsRunning.parse(running) : undefined,
     mode: 'onBlur'
   })
 

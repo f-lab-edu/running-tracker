@@ -9,8 +9,8 @@ let runnings: Running[] = [
   {
     id: '1',
     length: 5.2,
-    startTime: dayjs().subtract(1, 'day').valueOf() / 1000,
-    endTime: dayjs().subtract(1, 'day').add(30, 'minute').valueOf() / 1000,
+    startTime: dayjs().subtract(1, 'day').valueOf(),
+    endTime: dayjs().subtract(1, 'day').add(30, 'minute').valueOf(),
     pace: 6.2,
     location: '한강공원',
     memo: '오늘의 러닝',
@@ -21,8 +21,8 @@ let runnings: Running[] = [
   {
     id: '2',
     length: 3.5,
-    startTime: dayjs().subtract(2, 'day').valueOf() / 1000,
-    endTime: dayjs().subtract(2, 'day').add(20, 'minute').valueOf() / 1000,
+    startTime: dayjs().subtract(2, 'day').valueOf(),
+    endTime: dayjs().subtract(2, 'day').add(20, 'minute').valueOf(),
     pace: 5.8,
     location: '올림픽공원',
     memo: '가벼운 조깅',
@@ -33,8 +33,8 @@ let runnings: Running[] = [
   {
     id: '3',
     length: 10,
-    startTime: dayjs().subtract(5, 'day').valueOf() / 1000,
-    endTime: dayjs().subtract(5, 'day').add(60, 'minute').valueOf() / 1000,
+    startTime: dayjs().subtract(5, 'day').valueOf(),
+    endTime: dayjs().subtract(5, 'day').add(60, 'minute').valueOf(),
     pace: 6.0,
     location: '남산',
     memo: '장거리 러닝',
@@ -50,21 +50,22 @@ export const handlers = [
     await delay(500)
 
     const url = new URL(request.url)
-    const startDate = url.searchParams.get('startDate')
-    const endDate = url.searchParams.get('endDate')
+    const startTime = url.searchParams.get('startTime')
+    const endTime = url.searchParams.get('endTime')
     const minLength = url.searchParams.get('minLength')
     const maxLength = url.searchParams.get('maxLength')
     const minPace = url.searchParams.get('minPace')
     const maxPace = url.searchParams.get('maxPace')
+    const isAggregateOnly = url.searchParams.get('isAggregateOnly')
 
     let filteredData = [...runnings]
 
-    if (startDate) {
-      filteredData = filteredData.filter(item => item.startTime >= Number(startDate))
+    if (startTime) {
+      filteredData = filteredData.filter(item => item.startTime >= Number(startTime))
     }
 
-    if (endDate) {
-      filteredData = filteredData.filter(item => item.startTime <= Number(endDate))
+    if (endTime) {
+      filteredData = filteredData.filter(item => item.startTime <= Number(endTime))
     }
 
     if (minLength) {
@@ -81,6 +82,10 @@ export const handlers = [
 
     if (maxPace) {
       filteredData = filteredData.filter(item => item.pace <= Number(maxPace))
+    }
+
+    if (isAggregateOnly) {
+      filteredData = filteredData.filter(item => item.isAggregate)
     }
 
     return HttpResponse.json(filteredData)

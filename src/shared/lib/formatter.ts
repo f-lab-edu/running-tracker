@@ -6,7 +6,7 @@ import dayjs from "./dayjs";
  * @returns formatted date time
  */
 export const formatDateTime = (time: number, format: string = "YYYY-MM-DD HH:mm:ss") => {
-  return dayjs(time * 1000).format(format);
+  return dayjs(time).format(format);
 }
 
 export const formatTime = (time: number) => {

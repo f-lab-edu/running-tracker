@@ -3,7 +3,7 @@ import RunningListWithFilter from "@widgets/list-with-filter/RunningListWithFilt
 import CreateModalBtn from "@widgets/running-modal/ui/CreateModalBtn"
 import { CalendarDate, parseDate, today } from '@internationalized/date'
 import dayjs from "dayjs"
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import { useSearchParams } from "react-router-dom"
 import RunningModal from "@widgets/running-modal/ui/RunningModal"
 import { useRunningModal } from "@widgets/running-modal/hooks/useRunningModal"
@@ -14,8 +14,8 @@ export default function CalenderPage() {
 
   const [selectedDate, setSelectedDate] = useState<CalendarDate>(dateParam ? parseDate(dateParam) : today('Asia/Seoul'))
 
-  const startTime = dayjs(selectedDate.toString()).startOf('month').valueOf()
-  const endTime = dayjs(selectedDate.toString()).endOf('month').valueOf()
+  const startTime = useMemo(() => dayjs(selectedDate.toString()).startOf('day').valueOf(), [selectedDate])
+  const endTime = useMemo(() => dayjs(selectedDate.toString()).endOf('day').valueOf(), [selectedDate])
   const { openRunningModal } = useRunningModal()
 
 
