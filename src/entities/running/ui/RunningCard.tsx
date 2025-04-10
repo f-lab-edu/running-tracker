@@ -1,12 +1,7 @@
 import { Card, CardBody, CardHeader, Divider, Switch, Tooltip } from "@heroui/react"
-import { Running } from "../constant/running";
+import { Running, ToggleAggregateProps } from "../constant/running";
 import { formatDateTime, formatDistance, formatPace, formatTime } from "@shared/lib/formatter";
 import { BooleanRender } from "@shared/ui/StateRender";
-
-interface ToggleAggregateProps {
-  id: string;
-  isAggregate: boolean;
-}
 
 interface RunningCardProps {
   running: Running

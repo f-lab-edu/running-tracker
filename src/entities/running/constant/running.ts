@@ -14,3 +14,10 @@ export const RunningSchema = z.object({
 });
 
 export type Running = z.infer<typeof RunningSchema>;
+
+export const ToggleAggregatePropsSchema = z.object({
+  id: z.string(),
+  isAggregate: z.boolean(),
+});
+
+export type ToggleAggregateProps = z.infer<typeof ToggleAggregatePropsSchema>;

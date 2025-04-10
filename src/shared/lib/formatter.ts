@@ -5,8 +5,12 @@ import dayjs from "./dayjs";
  * @param time - time in seconds
  * @returns formatted date time
  */
-export const formatDateTime = (time: number) => {
-  return dayjs(time * 1000).format("YYYY-MM-DD HH:mm:ss");
+export const formatDateTime = (time: number, format: string = "YYYY-MM-DD HH:mm:ss") => {
+  return dayjs(time * 1000).format(format);
+}
+
+export const formatTime = (time: number) => {
+  return dayjs.duration(time, "seconds").format("HH:mm:ss");
 }
 
 /**
