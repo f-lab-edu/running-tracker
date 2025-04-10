@@ -5,33 +5,33 @@ import api from "@shared/lib/api"
 
 export const getRunningList = (searchOption: SearchOption) => {
   const searchParams = searchOptionAsSearchParsm(searchOption)
-  return api.get<Running[]>("/api/running", {
+  return api.get<Running[]>("running", {
     searchParams: searchParams
   })
 }
 
 export const getRunning = (id: string) => {
-  return api.get<Running>(`/api/running/${id}`)
+  return api.get<Running>(`running/${id}`)
 }
 
 export const createRunning = (running: Omit<Running, 'id'>) => {
-  return api.post<Running>("/api/running", {
+  return api.post<Running>("running", {
     json: running
   })
 }
 
 export const updateRunning = (running: Running) => {
-  return api.put<Running>(`/api/running/${running.id}`, {
+  return api.put<Running>(`running/${running.id}`, {
     json: running
   })
 }
 
 export const deleteRunning = (id: string) => {
-  return api.delete(`/api/running/${id}`)
+  return api.delete(`running/${id}`)
 }
 
 export const toggleAggregateRunning = (id: string, isAggregate: boolean) => {
-  return api.put<Running>(`/api/running/${id}/aggregate`, {
+  return api.put<Running>(`running/${id}/aggregate`, {
     json: { isAggregate }
   })
 }

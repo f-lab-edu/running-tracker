@@ -4,7 +4,7 @@ import { searchOptionAsSearchParsm } from "@entities/searchOption/lib/searchOpti
 import api from "@shared/lib/api"
 
 export const getAggregate = (searchOption: SearchOption) => {
-  return api.get<Aggregate>("/api/aggregate", {
+  return api.get<Aggregate>("aggregate", {
     searchParams: searchOptionAsSearchParsm(searchOption)
   })
 }
