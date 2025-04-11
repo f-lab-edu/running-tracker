@@ -6,7 +6,7 @@ export const useInsertRunningMutation = () => {
   return useMutation({
     mutationFn: createRunning,
     onSuccess() {
-      queryClient.invalidateQueries({ queryKey: ["running"] })
+      queryClient.invalidateQueries({ queryKey: ["running", 'list'] })
       queryClient.invalidateQueries({ queryKey: ["aggregate"] })
     },
   })

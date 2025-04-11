@@ -20,13 +20,11 @@ const SuspenseRunningDetail = (props: SuspenseRunningDetailProps) => {
   const handleDelete = async () => {
     setIsDeleting(true)
     await deleteRunning(id, {
-      onSuccess: () => {
-        onClickClose()
-      },
       onError: (error: Error) => {
         console.error('러닝 삭제 오류:', error)
       },
       onSettled: () => {
+        onClickClose()
         setIsDeleting(false)
       }
     })
